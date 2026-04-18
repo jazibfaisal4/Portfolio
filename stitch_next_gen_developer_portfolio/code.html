@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jazib Faisal | Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#353534",
+                    "on-secondary": "#233143",
+                    "surface-variant": "#353534",
+                    "error": "#ffb4ab",
+                    "surface": "#131313",
+                    "tertiary": "#ffb596",
+                    "surface-container-lowest": "#0e0e0e",
+                    "background": "#131313",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed": "#360f00",
+                    "secondary-fixed-dim": "#b9c8de",
+                    "inverse-surface": "#e5e2e1",
+                    "on-surface-variant": "#c1c6d7",
+                    "outline-variant": "#414754",
+                    "primary": "#aec6ff",
+                    "surface-dim": "#131313",
+                    "secondary-container": "#39485a",
+                    "on-primary": "#002e6b",
+                    "on-error": "#690005",
+                    "on-background": "#e5e2e1",
+                    "outline": "#8b90a0",
+                    "on-tertiary-container": "#fffeff",
+                    "inverse-on-surface": "#313030",
+                    "surface-tint": "#aec6ff",
+                    "on-tertiary": "#581e00",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed": "#0d1c2d",
+                    "surface-container-high": "#2a2a2a",
+                    "on-primary-container": "#ffffff",
+                    "on-surface": "#e5e2e1",
+                    "primary-fixed": "#d8e2ff",
+                    "secondary-fixed": "#d4e4fa",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "inverse-primary": "#0059c5",
+                    "on-primary-fixed-variant": "#004397",
+                    "secondary": "#b9c8de",
+                    "surface-bright": "#3a3939",
+                    "on-primary-fixed": "#001a43",
+                    "tertiary-container": "#ca4e00",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-secondary-fixed-variant": "#39485a",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "primary-fixed-dim": "#aec6ff",
+                    "surface-container": "#201f1f",
+                    "on-secondary-container": "#a7b6cc",
+                    "primary-container": "#0070f3",
+                    "surface-container-low": "#1c1b1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-glow {
+            background: radial-gradient(circle at center, rgba(0, 112, 243, 0.15) 0%, transparent 70%);
+        }
+
+        /* Entrance Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-reveal {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+
+        /* Project Card Hover */
+        .project-card {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+        }
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Reveal on Scroll trigger classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="selection:bg-primary-container selection:text-white">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-[100] bg-[#2a2a2a]/60 backdrop-blur-3xl shadow-[0_40px_40px_-10px_rgba(0,112,243,0.08)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#0070F3]" data-icon="terminal">terminal</span>
+<span class="text-xl font-bold tracking-tighter text-neutral-100 font-['Space_Grotesk'] uppercase">JAZIB FAISAL</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#0070F3] font-bold font-['Space_Grotesk'] tracking-tight uppercase hover:text-white transition-colors duration-300" href="#">Home</a>
+<a class="text-neutral-400 font-medium font-['Space_Grotesk'] tracking-tight uppercase hover:text-white transition-colors duration-300" href="#projects">Projects</a>
+<a class="text-neutral-400 font-medium font-['Space_Grotesk'] tracking-tight uppercase hover:text-white transition-colors duration-300" href="#stack">Stack</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-['Space_Grotesk'] font-bold tracking-tight scale-95 active:scale-90 transition-transform uppercase">
+            RESUME
+        </button>
+</div>
+</header>
+<main class="relative">
+<!-- Hero Section -->
+<section class="relative min-h-[707px] flex flex-col items-center justify-center px-8 overflow-hidden">
+<div class="absolute inset-0 bento-glow pointer-events-none"></div>
+<div class="relative z-10 text-center max-w-4xl">
+<h1 class="animate-reveal font-headline text-5xl md:text-8xl font-bold tracking-tighter text-on-surface mb-6 uppercase">
+                Architecting Web &amp; <span class="text-primary-container">Desktop</span> Experiences
+            </h1>
+<p class="animate-reveal delay-200 font-body text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                Hi, I'm Jazib Faisal. A BSCS Student building modern digital solutions with a focus on high-performance architecture and immersive interface design.
+            </p>
+<div class="animate-reveal delay-400 mt-12 flex gap-4 justify-center">
+<div class="h-1 w-20 bg-primary-container rounded-full"></div>
+<div class="h-1 w-4 bg-outline-variant rounded-full opacity-30"></div>
+</div>
+</div>
+</section>
+<!-- Spotlight Bento Grid -->
+<section class="max-w-7xl mx-auto px-8 py-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Web Engineering Block -->
+<div class="reveal-on-scroll md:col-span-7 bg-surface-container-low rounded-xl p-8 group hover:bg-surface-container-high transition-all duration-500 relative overflow-hidden border border-outline-variant/10">
+<div class="relative z-10">
+<span class="text-primary-container font-headline font-bold text-sm tracking-widest uppercase mb-4 block">Specialization 01</span>
+<h3 class="text-3xl font-headline font-bold text-on-surface mb-4">Web Engineering</h3>
+<p class="text-on-surface-variant mb-8 max-w-md">Developing robust, scalable web applications leveraging the Next.js ecosystem for server-side excellence and dynamic client experiences.</p>
+<div class="flex gap-3">
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest border border-outline-variant/20 text-xs text-secondary uppercase font-label">Next.js</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest border border-outline-variant/20 text-xs text-secondary uppercase font-label">React</span>
+</div>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[180px]" data-icon="language">language</span>
+</div>
+</div>
+<!-- Desktop Architecture Block -->
+<div class="reveal-on-scroll md:col-span-5 bg-surface-container-low rounded-xl p-8 group hover:bg-surface-container-high transition-all duration-500 relative overflow-hidden border border-outline-variant/10">
+<div class="relative z-10">
+<span class="text-primary-container font-headline font-bold text-sm tracking-widest uppercase mb-4 block">Specialization 02</span>
+<h3 class="text-3xl font-headline font-bold text-on-surface mb-4">Desktop Architecture</h3>
+<p class="text-on-surface-variant mb-8">Crafting native-feel desktop applications with Electron.js, bridging the gap between web tech and OS performance.</p>
+<div class="flex gap-3">
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest border border-outline-variant/20 text-xs text-secondary uppercase font-label">Electron.js</span>
+</div>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[140px]" data-icon="desktop_windows">desktop_windows</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Projects -->
+<section class="max-w-7xl mx-auto px-8 py-24 border-t border-outline-variant/10" id="projects">
+<h2 class="reveal-on-scroll font-headline text-4xl font-bold text-on-surface mb-16 uppercase tracking-tighter">Featured Projects</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="reveal-on-scroll project-card group bg-surface-container-low/50 backdrop-blur-xl border border-outline-variant/10 rounded-xl overflow-hidden hover:bg-surface-container-high transition-all">
+<div class="aspect-video w-full overflow-hidden bg-surface-container-lowest">
+<img alt="Project Apple 3D Showcase" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="3D product render of a sleek metallic smartphone with glowing blue highlights on a dark minimalist pedestal in a high-tech studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXRTr8YnhNOoRgda04j7OojqltKh9h-rvqXMfzlnxP4nGAvFX60y4NjItHt58WWG9QKcdxctXM2F5evu68b4vj8a08ji0tKKVSAWpeVr0bHkonLtj8oTJJo1lVPzcU3s_KnQ0d0uv-Ei0sdJXScF7sB95aga5mJt7DS8sqiI1OSnfTSeeBp7vOwFaFGrviCwFJm8jFb0L4dzW-S_PbBbpTAG5gHh6DZcVR7gwyMfy-tEHIpSqlVlQ0_YtXnCZI08ZAuZJSbc8aKpQW"/>
+</div>
+<div class="p-6">
+<h4 class="font-headline text-xl font-bold text-on-surface mb-2">Apple 3D Interaction</h4>
+<p class="text-on-surface-variant text-sm mb-4">An immersive web experience focusing on high-fidelity 3D model interaction and smooth scroll physics.</p>
+<div class="flex items-center gap-2 text-primary-container text-xs font-bold uppercase tracking-widest">
+                        Learn More <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="reveal-on-scroll project-card group bg-surface-container-low/50 backdrop-blur-xl border border-outline-variant/10 rounded-xl overflow-hidden hover:bg-surface-container-high transition-all">
+<div class="aspect-video w-full overflow-hidden bg-surface-container-lowest">
+<img alt="Brainwave AI UI Design" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Abstract visualization of a neural network with glowing blue nodes and digital light particles flowing through dark space with sharp depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGTWrBKbGAl6mvYkrsQw-N05lGPIQK_KkCqKCF7VZsbaXCoTZUggtUR6_u6-iKPQPzj61aXnWD9BFNVu8FtODjxec9qyzcrqHIsg9kOp7rj6deKeNvbyARsVNGE86zRg3T3s3AO9Mre4VTUqHd1IQJj3l8nDwfj1GbNd-ut2UO3gcD34qE7LOgMUMisOauoGfQJt0l0p6lu4s7-aP6NDQVVcn7dNSspkbt8zJEhzrihxxAh1B6r5Eh0PBkQSRdYjgKJC8x02Qqdtbt"/>
+</div>
+<div class="p-6">
+<h4 class="font-headline text-xl font-bold text-on-surface mb-2">Brainwave AI</h4>
+<p class="text-on-surface-variant text-sm mb-4">A futuristic AI dashboard interface designed with glassmorphic layers and advanced data visualization.</p>
+<div class="flex items-center gap-2 text-primary-container text-xs font-bold uppercase tracking-widest">
+                        Learn More <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Project 3 - FYP Large Card -->
+<div class="reveal-on-scroll project-card group md:col-span-2 lg:col-span-3 bg-surface-container-low/50 backdrop-blur-xl border border-outline-variant/10 rounded-xl overflow-hidden hover:bg-surface-container-high transition-all flex flex-col md:flex-row">
+<div class="md:w-1/2 aspect-video md:aspect-auto overflow-hidden bg-surface-container-lowest">
+<img alt="LMS Interface" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A clean top-down view of a modern library workspace with a laptop showing a sophisticated software management interface next to neat stacks of books" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-fwhJ8JqMXHUOSkr4bg9f_ZP_bncM0rXRzs-Ter0C1c_TA-6Gkk5hmmFdanTr1v2vDhfI83NiO6-kg1GXMD_JlpSdvdXGU35i_4i0CYBt2NndUmt4LOyLbdXenzwBmio3nTPSiwgxXAXWL0ybZBZ2UlGMYzebHKsOb2MTjbdFcRpQPR033KYxDGiKtu6AvIdQcuMkdbj7vT6lirQU0wx-T1hNevX0hHQxiWXKl3fCIbGQGgsvfnw70Q5k8y5JuVIoxfN2SGOq-P_M"/>
+</div>
+<div class="p-8 md:w-1/2 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-4">
+<span class="px-2 py-0.5 bg-primary-container text-white text-[10px] font-bold rounded uppercase">Final Year Project</span>
+<span class="text-on-surface-variant text-xs font-label">Electron.js / SQLite</span>
+</div>
+<h4 class="font-headline text-3xl font-bold text-on-surface mb-4">Quaid-e-Azam Library LMS</h4>
+<p class="text-on-surface-variant mb-6 leading-relaxed">
+                        A comprehensive Library Management System designed for high-traffic environments. Features offline-first architecture, automated inventory tracking, and a premium desktop UI optimized for administrative efficiency.
+                    </p>
+<button class="w-fit bg-surface-container-highest border border-outline-variant/20 px-8 py-3 rounded-full font-headline font-bold text-sm tracking-tighter uppercase hover:bg-primary-container transition-colors duration-300">
+                        Explore Technical Case Study
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Skill Cloud -->
+<section class="reveal-on-scroll max-w-7xl mx-auto px-8 py-24 bg-surface-container-lowest rounded-[2rem] my-24 relative overflow-hidden" id="stack">
+<div class="absolute inset-0 bento-glow opacity-50 pointer-events-none"></div>
+<div class="relative z-10 text-center mb-16">
+<h2 class="font-headline text-3xl font-bold text-on-surface uppercase tracking-tight">The Technical Stack</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
+<div class="bg-surface-container-high/40 p-8 rounded-xl border border-outline-variant/10 flex flex-col items-center gap-4 group hover:border-primary-container/40 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary-container" data-icon="react">terminal</span>
+<span class="font-label font-bold text-sm text-secondary uppercase tracking-widest">React</span>
+</div>
+<div class="bg-surface-container-high/40 p-8 rounded-xl border border-outline-variant/10 flex flex-col items-center gap-4 group hover:border-primary-container/40 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary-container" data-icon="dynamic_form">dynamic_form</span>
+<span class="font-label font-bold text-sm text-secondary uppercase tracking-widest">Next.js</span>
+</div>
+<div class="bg-surface-container-high/40 p-8 rounded-xl border border-outline-variant/10 flex flex-col items-center gap-4 group hover:border-primary-container/40 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary-container" data-icon="palette">palette</span>
+<span class="font-label font-bold text-sm text-secondary uppercase tracking-widest">Tailwind</span>
+</div>
+<div class="bg-surface-container-high/40 p-8 rounded-xl border border-outline-variant/10 flex flex-col items-center gap-4 group hover:border-primary-container/40 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary-container" data-icon="developer_board">developer_board</span>
+<span class="font-label font-bold text-sm text-secondary uppercase tracking-widest">Electron</span>
+</div>
+<div class="bg-surface-container-high/40 p-8 rounded-xl border border-outline-variant/10 flex flex-col items-center gap-4 group hover:border-primary-container/40 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary-container" data-icon="code">code</span>
+<span class="font-label font-bold text-sm text-secondary uppercase tracking-widest">TypeScript</span>
+</div>
+</div>
+</section>
+<!-- Contact minimalist card -->
+<section class="reveal-on-scroll max-w-4xl mx-auto px-8 py-24 text-center">
+<div class="bg-surface-container-low p-12 rounded-[2rem] border border-outline-variant/10">
+<h2 class="font-headline text-4xl font-bold text-on-surface mb-6 uppercase tracking-tighter">Ready to Build?</h2>
+<p class="text-on-surface-variant mb-10 max-w-xl mx-auto">Jazib is currently accepting new projects and collaboration opportunities for high-performance applications.</p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-4">
+<a class="bg-primary-container text-white px-10 py-4 rounded-full font-headline font-bold uppercase tracking-widest shadow-xl shadow-blue-900/20 hover:scale-105 transition-transform" href="mailto:hello@jazibfaisal.com">
+                    Start a Conversation
+                </a>
+<a class="text-on-surface-variant font-label text-sm uppercase tracking-widest hover:text-white transition-colors" href="#">
+                    View LinkedIn
+                </a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-[#131313]">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center border-t border-neutral-800/30 gap-6 pt-12">
+<div class="text-neutral-100 font-bold font-headline uppercase tracking-tight">JAZIB FAISAL</div>
+<p class="font-['Inter'] text-xs font-light tracking-[0.2em] uppercase text-neutral-500">© 2024 JAZIB FAISAL. ENGINEERED WITH PRECISION.</p>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs font-light tracking-[0.2em] uppercase text-neutral-500 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">GITHUB</a>
+<a class="font-['Inter'] text-xs font-light tracking-[0.2em] uppercase text-neutral-500 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">LINKEDIN</a>
+<a class="font-['Inter'] text-xs font-light tracking-[0.2em] uppercase text-neutral-500 hover:text-white transition-colors underline-offset-4 hover:underline" href="#">SOURCE</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-fit rounded-full px-6 py-3 z-[100] bg-[#2a2a2a]/50 backdrop-blur-[30px] flex items-center gap-8 shadow-2xl shadow-blue-900/20">
+<a class="bg-[#0070F3] text-white rounded-full p-2 scale-110 shadow-[0_0_15px_rgba(0,112,243,0.5)] flex items-center justify-center transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home_app_logo">home_app_logo</span>
+</a>
+<a class="text-neutral-400 p-2 hover:text-[#0070F3] hover:scale-110 transition-all flex items-center justify-center" href="#projects">
+<span class="material-symbols-outlined" data-icon="folder_special">folder_special</span>
+</a>
+<a class="text-neutral-400 p-2 hover:text-[#0070F3] hover:scale-110 transition-all flex items-center justify-center" href="#stack">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+</a>
+<a class="text-neutral-400 p-2 hover:text-[#0070F3] hover:scale-110 transition-all flex items-center justify-center" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</a>
+<a class="text-neutral-400 p-2 hover:text-[#0070F3] hover:scale-110 transition-all flex items-center justify-center" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</a>
+</nav>
+<script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add staggered delay to elements appearing at the same time
+                setTimeout(() => {
+                    entry.target.classList.add('active');
+                }, index * 100);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+        observer.observe(el);
+    });
+</script>
+</body></html>
