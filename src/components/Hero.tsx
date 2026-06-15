@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { personalInfo } from "@/constants";
 
 export function Hero() {
-  const headingWords = ["Architecting", "Web", "&", "Desktop", "Experiences"];
-  const subtitleWords = `Hi, I'm ${personalInfo.name}. ${personalInfo.intro}`.split(" ");
+  const headingWords = ["Architecting", "Full-Stack", "&", "Desktop", "Experiences"];
+  const subtitleWords =
+    "Hi, I'm Jazib Faisal. A Full-Stack and MERN Stack Developer building modern digital solutions with a focus on high-performance architecture, robust backend systems, and immersive interface design.".split(
+      " ",
+    );
 
   return (
     <section className="relative flex min-h-[707px] flex-col items-center justify-center overflow-hidden px-5 sm:px-8">

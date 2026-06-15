@@ -75,6 +75,7 @@ export function Navbar() {
           <motion.a
             whileTap={{ scale: 0.92 }}
             href="/Jazib_Faisal_Resume.pdf"
+            download="Jazib_Faisal_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2 hidden rounded-full bg-primary-container px-5 py-2 font-headline text-sm font-bold uppercase tracking-tightest text-on-primary-container md:block"
