@@ -1,23 +1,39 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LayoutGroup, motion } from "framer-motion";
 import { skillGroups, techStack } from "@/constants";
+import { useFocus } from "@/context/FocusContext";
 import { Stagger, StaggerItem } from "./motion";
 
-function SkillChip({ label }: { label: string }) {
+function SkillChip({ label, active }: { label: string; active?: boolean }) {
   return (
-    <span className="rounded-full border border-outline-variant/20 bg-surface-container-highest px-4 py-1.5 font-label text-xs uppercase text-secondary">
+    <motion.span
+      layout
+      className={`rounded-full border px-4 py-1.5 font-label text-xs uppercase ${
+        active
+          ? "border-primary-container/40 bg-primary-container/15 text-primary"
+          : "border-outline-variant/20 bg-surface-container-highest text-secondary"
+      }`}
+    >
       {label}
-    </span>
+    </motion.span>
   );
 }
 
 export function SkillsBento() {
+  const { focus } = useFocus();
+
+  const sortedStack = [...techStack].sort((a, b) => {
+    const aMatch = a.focusAreas.includes(focus) ? 0 : 1;
+    const bMatch = b.focusAreas.includes(focus) ? 0 : 1;
+    return aMatch - bMatch;
+  });
+
   return (
     <>
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <Stagger className="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <StaggerItem className="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all duration-500 hover:bg-surface-container-high md:col-span-7">
+          <StaggerItem className="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all duration-500 hover:bg-surface-container-high md:col-span-4">
             <motion.div
               whileHover={{ scale: 1.02, rotateX: 1.6, rotateY: -1.6 }}
               transition={{ type: "spring", stiffness: 220, damping: 18 }}
@@ -27,20 +43,20 @@ export function SkillsBento() {
               <span className="mb-4 block font-headline text-sm font-bold uppercase tracking-[0.2em] text-primary-container">
                 Specialization 01
               </span>
-              <h3 className="mb-4 font-headline text-3xl font-bold text-on-surface">Web Engineering</h3>
+              <h3 className="mb-4 font-headline text-3xl font-bold text-on-surface">AI / ML</h3>
               <p className="mb-8 max-w-md text-on-surface-variant">
-                Developing robust, scalable applications leveraging the Next.js ecosystem for server-side excellence
-                and dynamic client experiences.
+                Building predictive models and data pipelines with Python, Pandas, and Scikit-Learn — integrating
+                intelligent endpoints into production applications.
               </p>
               <div className="flex flex-wrap gap-3">
-                {skillGroups.web.map((skill) => (
-                  <SkillChip key={skill} label={skill} />
+                {skillGroups.ai.map((skill) => (
+                  <SkillChip key={skill} label={skill} active={focus === "ai-ml"} />
                 ))}
               </div>
             </motion.div>
           </StaggerItem>
 
-          <StaggerItem className="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all duration-500 hover:bg-surface-container-high md:col-span-5">
+          <StaggerItem className="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all duration-500 hover:bg-surface-container-high md:col-span-4">
             <motion.div
               whileHover={{ scale: 1.02, rotateX: 1.2, rotateY: -1.2 }}
               transition={{ type: "spring", stiffness: 220, damping: 18 }}
@@ -50,14 +66,37 @@ export function SkillsBento() {
               <span className="mb-4 block font-headline text-sm font-bold uppercase tracking-[0.2em] text-primary-container">
                 Specialization 02
               </span>
-              <h3 className="mb-4 font-headline text-3xl font-bold text-on-surface">Full-Stack Desktop</h3>
+              <h3 className="mb-4 font-headline text-3xl font-bold text-on-surface">Full-Stack MERN</h3>
               <p className="mb-8 text-on-surface-variant">
-                Crafting native-feel desktop applications with Electron.js, backed by Node.js APIs, MySQL persistence,
-                and production-grade state management.
+                End-to-end web engineering with Next.js, Node.js, Express, MySQL, Prisma, Supabase, and Zustand for
+                scalable, type-safe applications.
               </p>
               <div className="flex flex-wrap gap-3">
-                {[...skillGroups.desktop.slice(0, 2), ...skillGroups.backend.slice(0, 4)].map((skill) => (
-                  <SkillChip key={skill} label={skill} />
+                {[...skillGroups.web.slice(0, 3), ...skillGroups.backend.slice(0, 3)].map((skill) => (
+                  <SkillChip key={skill} label={skill} active={focus === "fullstack"} />
+                ))}
+              </div>
+            </motion.div>
+          </StaggerItem>
+
+          <StaggerItem className="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all duration-500 hover:bg-surface-container-high md:col-span-4">
+            <motion.div
+              whileHover={{ scale: 1.02, rotateX: 1.2, rotateY: -1.2 }}
+              transition={{ type: "spring", stiffness: 220, damping: 18 }}
+              className="relative z-10"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <span className="mb-4 block font-headline text-sm font-bold uppercase tracking-[0.2em] text-primary-container">
+                Specialization 03
+              </span>
+              <h3 className="mb-4 font-headline text-3xl font-bold text-on-surface">Desktop Engineering</h3>
+              <p className="mb-8 text-on-surface-variant">
+                Native Electron applications with secure IPC, offline-first patterns, and production-grade database
+                integration.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {skillGroups.desktop.map((skill) => (
+                  <SkillChip key={skill} label={skill} active={focus === "desktop"} />
                 ))}
               </div>
             </motion.div>
@@ -80,21 +119,31 @@ export function SkillsBento() {
               The Technical Stack
             </h2>
           </div>
-          <Stagger className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
-            {techStack.map((item) => (
-              <StaggerItem key={item}>
-                <motion.div
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 240, damping: 18 }}
-                  className="flex h-full flex-col items-center justify-center gap-4 rounded-xl border border-outline-variant/10 bg-surface-container-high/40 p-6 transition-colors hover:border-primary-container/40 sm:p-8"
-                >
-                  <span className="text-center font-label text-xs font-bold uppercase tracking-[0.15em] text-secondary sm:text-sm sm:tracking-[0.2em]">
-                    {item}
-                  </span>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </Stagger>
+          <LayoutGroup>
+            <Stagger className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
+              {sortedStack.map((item) => {
+                const isActive = item.focusAreas.includes(focus);
+                return (
+                  <StaggerItem key={item.name}>
+                    <motion.div
+                      layout
+                      whileHover={{ y: -4, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 240, damping: 18 }}
+                      className={`flex h-full flex-col items-center justify-center gap-4 rounded-xl border p-6 transition-colors sm:p-8 ${
+                        isActive
+                          ? "border-primary-container/50 bg-primary-container/10 shadow-electric-glow"
+                          : "border-outline-variant/10 bg-surface-container-high/40 hover:border-primary-container/40"
+                      }`}
+                    >
+                      <span className="text-center font-label text-xs font-bold uppercase tracking-[0.15em] text-secondary sm:text-sm sm:tracking-[0.2em]">
+                        {item.name}
+                      </span>
+                    </motion.div>
+                  </StaggerItem>
+                );
+              })}
+            </Stagger>
+          </LayoutGroup>
         </div>
       </motion.section>
     </>

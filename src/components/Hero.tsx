@@ -4,11 +4,8 @@ import { motion } from "framer-motion";
 import { personalInfo } from "@/constants";
 
 export function Hero() {
-  const headingWords = ["Architecting", "Full-Stack", "&", "Desktop", "Experiences"];
-  const subtitleWords =
-    "Hi, I'm Jazib Faisal. A Full-Stack and MERN Stack Developer building modern digital solutions with a focus on high-performance architecture, robust backend systems, and immersive interface design.".split(
-      " ",
-    );
+  const headingWords = ["AI/ML", "Developer", "&", "Full-Stack", "Engineer"];
+  const subtitleWords = personalInfo.bio.split(" ");
 
   return (
     <section className="relative flex min-h-[707px] flex-col items-center justify-center overflow-hidden px-5 sm:px-8">
@@ -32,7 +29,7 @@ export function Hero() {
           }}
           initial="hidden"
           animate="show"
-          className="font-headline text-5xl font-bold uppercase tracking-tightest text-on-surface md:text-8xl"
+          className="font-headline text-4xl font-bold uppercase tracking-tightest text-on-surface sm:text-5xl md:text-8xl"
         >
           {headingWords.map((word) => (
             <motion.span
@@ -42,7 +39,9 @@ export function Hero() {
                 show: { opacity: 1, y: 0 },
               }}
               transition={{ type: "spring", stiffness: 180, damping: 18 }}
-              className={`mr-[0.24em] inline-block ${word === "Desktop" ? "text-primary-container" : ""}`}
+              className={`mr-[0.24em] inline-block ${
+                word === "AI/ML" || word === "Full-Stack" ? "text-primary-container" : ""
+              }`}
             >
               {word}
             </motion.span>
@@ -57,7 +56,7 @@ export function Hero() {
               transition: { staggerChildren: 0.018, delayChildren: 0.28 },
             },
           }}
-          className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant md:text-xl"
+          className="mx-auto mt-6 max-w-3xl font-body text-lg leading-relaxed text-on-surface-variant md:text-xl"
         >
           {subtitleWords.map((word, index) => (
             <motion.span
