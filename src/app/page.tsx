@@ -1,28 +1,11 @@
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
-import { MobileDock } from "@/components/MobileDock";
-import { Navbar } from "@/components/Navbar";
-import { PageTransition } from "@/components/PageTransition";
-import { Projects } from "@/components/Projects";
-import { SkillsBento } from "@/components/Skills";
+import { profile } from "@/constants";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-surface text-on-surface">
-      <div className="mx-auto pb-8">
-        <PageTransition>
-          <Navbar />
-          <main>
-            <Hero />
-            <SkillsBento />
-            <Projects />
-            <Contact />
-          </main>
-        </PageTransition>
-      </div>
-      <MobileDock />
-      <Footer />
-    </div>
+    <main className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center gap-4 px-5 py-16">
+      <h1 className="font-headline text-4xl font-bold text-on-surface">{profile.name}</h1>
+      <p className="text-lg text-on-surface">{profile.title}</p>
+      <p className="max-w-[68ch] text-on-surface-variant">{profile.hero.subtext}</p>
+    </main>
   );
 }

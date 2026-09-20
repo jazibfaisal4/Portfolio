@@ -1,19 +1,14 @@
 "use client";
 
 import { LayoutGroup, motion } from "framer-motion";
-import { skillGroups, techStack } from "@/constants";
-import { useFocus } from "@/context/FocusContext";
+import { onlyVerified, skills } from "@/constants";
 import { Stagger, StaggerItem } from "./motion";
 
-function SkillChip({ label, active }: { label: string; active?: boolean }) {
+function SkillChip({ label }: { label: string }) {
   return (
     <motion.span
       layout
-      className={`rounded-full border px-4 py-1.5 font-label text-xs uppercase ${
-        active
-          ? "border-primary-container/40 bg-primary-container/15 text-primary"
-          : "border-outline-variant/20 bg-surface-container-highest text-secondary"
-      }`}
+      className="rounded-full border border-outline-variant/20 bg-surface-container-highest px-4 py-1.5 font-label text-xs uppercase text-secondary"
     >
       {label}
     </motion.span>
@@ -21,13 +16,10 @@ function SkillChip({ label, active }: { label: string; active?: boolean }) {
 }
 
 export function SkillsBento() {
-  const { focus } = useFocus();
-
-  const sortedStack = [...techStack].sort((a, b) => {
-    const aMatch = a.focusAreas.includes(focus) ? 0 : 1;
-    const bMatch = b.focusAreas.includes(focus) ? 0 : 1;
-    return aMatch - bMatch;
-  });
+  const visibleSkills = onlyVerified(skills);
+  const aiSkills = visibleSkills.filter((skill) => skill.category === "ai-ml");
+  const fullstackSkills = visibleSkills.filter((skill) => skill.category === "fullstack");
+  const desktopSkills = visibleSkills.filter((skill) => skill.category === "desktop");
 
   return (
     <>
@@ -49,8 +41,8 @@ export function SkillsBento() {
                 intelligent endpoints into production applications.
               </p>
               <div className="flex flex-wrap gap-3">
-                {skillGroups.ai.map((skill) => (
-                  <SkillChip key={skill} label={skill} active={focus === "ai-ml"} />
+                {aiSkills.map((skill) => (
+                  <SkillChip key={skill.name} label={skill.name} />
                 ))}
               </div>
             </motion.div>
@@ -72,8 +64,8 @@ export function SkillsBento() {
                 scalable, type-safe applications.
               </p>
               <div className="flex flex-wrap gap-3">
-                {[...skillGroups.web.slice(0, 3), ...skillGroups.backend.slice(0, 3)].map((skill) => (
-                  <SkillChip key={skill} label={skill} active={focus === "fullstack"} />
+                {fullstackSkills.slice(0, 6).map((skill) => (
+                  <SkillChip key={skill.name} label={skill.name} />
                 ))}
               </div>
             </motion.div>
@@ -95,8 +87,8 @@ export function SkillsBento() {
                 integration.
               </p>
               <div className="flex flex-wrap gap-3">
-                {skillGroups.desktop.map((skill) => (
-                  <SkillChip key={skill} label={skill} active={focus === "desktop"} />
+                {desktopSkills.map((skill) => (
+                  <SkillChip key={skill.name} label={skill.name} />
                 ))}
               </div>
             </motion.div>
@@ -121,19 +113,14 @@ export function SkillsBento() {
           </div>
           <LayoutGroup>
             <Stagger className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
-              {sortedStack.map((item) => {
-                const isActive = item.focusAreas.includes(focus);
+              {visibleSkills.map((item) => {
                 return (
                   <StaggerItem key={item.name}>
                     <motion.div
                       layout
                       whileHover={{ y: -4, scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 240, damping: 18 }}
-                      className={`flex h-full flex-col items-center justify-center gap-4 rounded-xl border p-6 transition-colors sm:p-8 ${
-                        isActive
-                          ? "border-primary-container/50 bg-primary-container/10 shadow-electric-glow"
-                          : "border-outline-variant/10 bg-surface-container-high/40 hover:border-primary-container/40"
-                      }`}
+                      className="flex h-full flex-col items-center justify-center gap-4 rounded-xl border border-outline-variant/10 bg-surface-container-high/40 p-6 transition-colors hover:border-primary-container/40 sm:p-8"
                     >
                       <span className="text-center font-label text-xs font-bold uppercase tracking-[0.15em] text-secondary sm:text-sm sm:tracking-[0.2em]">
                         {item.name}

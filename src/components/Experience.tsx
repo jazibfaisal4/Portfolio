@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { experience } from "@/constants";
+import { experience, onlyVerified } from "@/constants";
 import { Stagger, StaggerItem } from "./motion";
 
 export function Experience() {
@@ -11,7 +11,7 @@ export function Experience() {
         Experience
       </h2>
       <Stagger className="space-y-8">
-        {experience.map((item) => (
+        {onlyVerified(experience).map((item) => (
           <StaggerItem key={item.company}>
             <motion.div
               whileHover={{ scale: 1.01 }}
@@ -25,7 +25,7 @@ export function Experience() {
                 </div>
                 <div className="text-right">
                   <p className="font-label text-sm uppercase tracking-[0.1em] text-on-surface-variant">
-                    {item.period}
+                    {item.start} to {item.end}
                   </p>
                   <p className="font-label text-xs text-on-surface-variant">{item.location}</p>
                 </div>

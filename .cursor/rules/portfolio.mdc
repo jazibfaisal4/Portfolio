@@ -4,7 +4,7 @@ alwaysApply: true
 ---
 - Repo layout: Next.js 16 frontend at the root, Python FastAPI backend in /backend. The browser only calls /api/* on the Next origin; next.config.ts rewrites those to BACKEND_URL. Do not add API route handlers in src/app/api for chat, contact or github.
 - Stack: Next.js 16 App Router, React 19, TypeScript, Tailwind 3.4, Framer Motion. Before using an unfamiliar Next 16 API, check node_modules/next/dist/docs.
-- All site copy lives in src/constants/index.ts. Components read from it. Never hard-code copy in components. The assistant's knowledge lives in backend/data/knowledge.json: keep both in sync when facts change.
+- All site copy lives in src/constants/. Components read from it. Never hard-code copy in components. The assistant's knowledge lives in backend/data/knowledge.json: keep both in sync when facts change.
 - Never invent facts, metrics, dates, employers or links. If a fact is missing, leave a `TODO(jazib)` comment and tell me. Only show skills, projects and repos that are marked verified.
 - Design tokens live in tailwind.config.ts and globals.css. No ad-hoc hex colors in components.
 - Motion uses Framer Motion and must respect prefers-reduced-motion. Do not animate every element.

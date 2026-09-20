@@ -1,22 +1,13 @@
 "use client";
 
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
-import Image from "next/image";
-import { featuredProjects } from "@/constants";
-import { useFocus } from "@/context/FocusContext";
+import { onlyVerified, projects } from "@/constants";
 import { Stagger, StaggerItem } from "./motion";
 
 export function Projects() {
-  const { focus } = useFocus();
-
-  const sortedProjects = [...featuredProjects].sort((a, b) => {
-    const aMatch = a.focusAreas.includes(focus) ? 0 : 1;
-    const bMatch = b.focusAreas.includes(focus) ? 0 : 1;
-    return aMatch - bMatch;
-  });
-
-  const regularProjects = sortedProjects.filter((project) => !project.highlight);
-  const highlightedProject = sortedProjects.find((project) => project.highlight);
+  const visibleProjects = onlyVerified(projects).filter((project) => project.kind === "project");
+  const regularProjects = visibleProjects.filter((project) => !project.flagship);
+  const highlightedProject = visibleProjects.find((project) => project.flagship);
 
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8" id="projects">
@@ -28,15 +19,10 @@ export function Projects() {
         <Stagger className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {regularProjects.map((project) => {
-              const isHighlighted = project.focusAreas.includes(focus);
               return (
                 <StaggerItem
-                  key={project.name}
-                  className={`group overflow-hidden rounded-xl backdrop-blur-glass ${
-                    isHighlighted
-                      ? "bg-surface-container-high/70 ring-1 ring-primary-container/40"
-                      : "bg-surface-container-low/50"
-                  }`}
+                  key={project.id}
+                  className="group overflow-hidden rounded-xl bg-surface-container-low/50 backdrop-blur-glass"
                 >
                   <motion.div
                     layout
@@ -44,20 +30,7 @@ export function Projects() {
                     transition={{ type: "spring", stiffness: 230, damping: 18 }}
                     className="h-full"
                   >
-                    <div className="relative aspect-video w-full overflow-hidden bg-surface-container-lowest">
-                      <Image
-                        src={project.image}
-                        alt={project.imageAlt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        priority={project.name === "Apple 3D Website"}
-                      />
-                    </div>
                     <div className="p-6">
-                      <p className="mb-1 font-label text-[10px] uppercase tracking-[0.15em] text-primary">
-                        {project.tagline}
-                      </p>
                       <h4 className="mb-2 font-headline text-xl font-bold text-on-surface">{project.name}</h4>
                       <p className="mb-4 text-sm text-on-surface-variant">{project.description}</p>
                       <div className="mb-4 flex flex-wrap gap-2">
@@ -70,14 +43,16 @@ export function Projects() {
                           </span>
                         ))}
                       </div>
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary-container"
-                      >
-                        Learn More
-                      </a>
+                      {project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 font-headline text-xs font-bold uppercase tracking-[0.2em] text-primary-container"
+                        >
+                          Learn More
+                        </a>
+                      ) : null}
                     </div>
                   </motion.div>
                 </StaggerItem>
@@ -91,33 +66,17 @@ export function Projects() {
                 layout
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 220, damping: 18 }}
-                className={`flex flex-col md:flex-row ${
-                  highlightedProject.focusAreas.includes(focus)
-                    ? "ring-1 ring-primary-container/40"
-                    : ""
-                }`}
+                className="flex flex-col md:flex-row"
               >
-                <div className="relative aspect-video overflow-hidden bg-surface-container-lowest md:aspect-auto md:min-h-[320px] md:w-1/2">
-                  <Image
-                    src={highlightedProject.image}
-                    alt={highlightedProject.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-col justify-center p-8 md:w-1/2">
+                <div className="flex flex-col justify-center p-8">
                   <div className="mb-4 flex flex-wrap items-center gap-2">
-                    {"badge" in highlightedProject && highlightedProject.badge && (
+                    {highlightedProject.badge ? (
                       <span className="rounded bg-primary-container px-2 py-0.5 text-[10px] font-bold uppercase text-white">
                         {highlightedProject.badge}
                       </span>
-                    )}
+                    ) : null}
                     <span className="font-label text-xs text-on-surface-variant">{highlightedProject.status}</span>
                   </div>
-                  <p className="mb-2 font-label text-xs uppercase tracking-[0.15em] text-primary">
-                    {highlightedProject.tagline}
-                  </p>
                   <h4 className="mb-4 font-headline text-2xl font-bold text-on-surface sm:text-3xl">
                     {highlightedProject.name}
                   </h4>
@@ -132,12 +91,6 @@ export function Projects() {
                       </span>
                     ))}
                   </div>
-                  <button
-                    className="w-fit rounded-full bg-surface-container-highest px-8 py-3 font-headline text-sm font-bold uppercase tracking-tightest text-on-surface transition-colors hover:bg-primary-container hover:text-white"
-                    type="button"
-                  >
-                    Explore Technical Case Study
-                  </button>
                 </div>
               </motion.div>
             </StaggerItem>

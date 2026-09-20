@@ -43,7 +43,6 @@ export function AIAssistant() {
 
     const reader = res.body?.getReader();
     const decoder = new TextDecoder();
-    let assistantText = "";
 
     setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
@@ -51,11 +50,10 @@ export function AIAssistant() {
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-        assistantText += decoder.decode(value);
+        const chunk = decoder.decode(value);
         setMessages((prev) => {
-          const updated = [...prev];
-          updated[updated.length - 1] = { role: "assistant", content: assistantText };
-          return updated;
+          const last = prev[prev.length - 1];
+          return [...prev.slice(0, -1), { role: "assistant", content: `${last?.content ?? ""}${chunk}` }];
         });
       }
     }

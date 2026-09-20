@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { personalInfo, socials } from "@/constants";
+import { profile } from "@/constants";
 import Link from "next/link";
 import { Magnetic } from "./Magnetic";
 
@@ -34,7 +34,7 @@ export function Navbar() {
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
         <div className="flex items-center gap-3">
           <span className="font-headline text-lg font-bold uppercase tracking-tightest text-on-surface sm:text-xl">
-            {personalInfo.name}
+            {profile.name}
           </span>
         </div>
 
@@ -57,14 +57,14 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {socials.map((social) => (
+          {profile.socials.map((social) => (
             <Magnetic key={social.name} strength={0.2}>
               <motion.div whileHover={{ y: -2, scale: 1.08 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Visit ${personalInfo.name} on ${social.name}`}
+                  aria-label={`Visit ${profile.name} on ${social.name}`}
                   className="inline-flex rounded-full bg-surface-container-highest p-2 text-on-surface-variant transition-colors duration-300 hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container/70"
                 >
                   <SocialIcon name={social.name} />
@@ -74,7 +74,7 @@ export function Navbar() {
           ))}
           <motion.a
             whileTap={{ scale: 0.92 }}
-            href="/Jazib_Faisal_Resume.pdf"
+            href={profile.resume}
             download="Jazib_Faisal_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"

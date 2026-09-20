@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { socials } from "@/constants";
+import { profile } from "@/constants";
 import { Magnetic } from "./Magnetic";
 
 export function Contact() {
-  const linkedIn = socials.find((social) => social.name === "LinkedIn")?.href ?? "#";
+  const linkedIn = profile.linkedin;
 
   return (
     <motion.section
@@ -26,7 +26,7 @@ export function Contact() {
           <Magnetic strength={0.18}>
             <a
               className="inline-flex rounded-full bg-primary-container px-10 py-4 font-headline text-sm font-bold uppercase tracking-[0.12em] text-white shadow-electric-glow transition-transform hover:scale-105"
-              href="mailto:jazibfaisal66@gmail.com?subject=Inquiry%20from%20Portfolio"
+              href={`mailto:${profile.email}?subject=Inquiry%20from%20Portfolio`}
               aria-label="Start conversation by email"
             >
               Start a Conversation

@@ -13,14 +13,14 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Jazib Faisal | Portfolio",
+  title: "Jazib Faisal | AI/ML developer and full-stack developer",
   description:
-    "Jazib Faisal is a BSCS Student and Full-Stack Developer building modern web and desktop applications with premium UX.",
+    "I build voice-first AI systems and the full-stack products around them. Fresh BSCS graduate building a real-time AI interview system.",
   metadataBase: new URL("https://portfolio-jazib.vercel.app"),
   openGraph: {
-    title: "Jazib Faisal | BSCS Student & Full-Stack Developer",
+    title: "Jazib Faisal | AI/ML developer and full-stack developer",
     description:
-      "Portfolio featuring Apple 3D Website, Brainwave AI UI, and a Final Year Library Management System for Quaid-e-Azam Library.",
+      "Fresh BSCS graduate. I'm building a real-time AI interview system: live audio over LiveKit, local Whisper speech-to-text and a recruiter dashboard.",
     type: "website",
   },
 };

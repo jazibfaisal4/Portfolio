@@ -20,7 +20,7 @@ Every prompt points here. If a fact is not in this file, do not put it on the si
 - Email: jazibfaisal66@gmail.com
 - GitHub: https://github.com/jazibfaisal4
 - LinkedIn: https://www.linkedin.com/in/jazib-faisal-5a8978322/
-- Resume: /Jazib_Faisal_Resume.pdf (TODO(jazib): replace the file with the latest one)
+- Resume: /Jazib_Faisal_Resume.pdf
 
 ## Approved copy (use as written, or shorter)
 

@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { personalInfo } from "@/constants";
+import { profile } from "@/constants";
 
 export function Hero() {
-  const headingWords = ["AI/ML", "Developer", "&", "Full-Stack", "Engineer"];
-  const subtitleWords = personalInfo.bio.split(" ");
+  const headingWords = profile.title.split(" ");
+  const subtitleWords = profile.hero.subtext.split(" ");
 
   return (
     <section className="relative flex min-h-[707px] flex-col items-center justify-center overflow-hidden px-5 sm:px-8">
@@ -17,7 +17,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           className="mb-5 font-headline text-sm font-bold uppercase tracking-[0.24em] text-primary"
         >
-          {personalInfo.name}
+          {profile.name}
         </motion.p>
         <motion.h1
           transition={{ type: "spring", stiffness: 120, damping: 20, mass: 0.9 }}
