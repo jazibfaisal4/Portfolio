@@ -7,6 +7,38 @@ export type Skill = {
   verified: boolean;
 };
 
+export type SkillFilterId = "all" | SkillCategory;
+
+export type SkillFilter = {
+  id: SkillFilterId;
+  label: string;
+  category: SkillCategory | null;
+};
+
+export const skillCategoryLabels: Record<SkillCategory, string> = {
+  "ai-ml": "AI & ML",
+  voice: "Voice AI",
+  fullstack: "Full-stack",
+  backend: "Data & backend",
+  desktop: "Desktop",
+};
+
+export const skillFilters: readonly SkillFilter[] = [
+  { id: "all", label: "All", category: null },
+  { id: "ai-ml", label: "AI & ML", category: "ai-ml" },
+  { id: "voice", label: "Voice AI", category: "voice" },
+  { id: "fullstack", label: "Full-stack", category: "fullstack" },
+  { id: "backend", label: "Data & backend", category: "backend" },
+  { id: "desktop", label: "Desktop", category: "desktop" },
+];
+
+export const skillsCopy = {
+  index: "// 02",
+  title: "Skills",
+  intro: "Tools I used on the interview system, at PureLogics, and on my university and web projects.",
+  tablistLabel: "Filter skills by domain",
+} as const;
+
 export const skills: readonly Skill[] = [
   {
     name: "Python",
@@ -33,7 +65,7 @@ export const skills: readonly Skill[] = [
     verified: true,
   },
   {
-    name: "data analysis",
+    name: "Data analysis",
     category: "ai-ml",
     usedFor: "Python & AI/ML trainee work at PureLogics.",
     verified: true,

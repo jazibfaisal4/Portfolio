@@ -1,14 +1,20 @@
 import { navLinks } from "@/constants";
+import { About } from "@/components/sections/About";
 import { Hero } from "@/components/sections/Hero";
+import { Skills } from "@/components/sections/Skills";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+
+const pendingHrefs = new Set(["#home", "#about", "#skills"]);
 
 export default function Home() {
   return (
     <main id="content">
       <Hero />
+      <About />
+      <Skills />
       {navLinks
-        .filter((link) => link.href !== "#home")
+        .filter((link) => !pendingHrefs.has(link.href))
         .map((link) => {
           const id = link.href.slice(1);
           return (

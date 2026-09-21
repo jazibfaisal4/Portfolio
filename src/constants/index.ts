@@ -6,8 +6,11 @@ export type { Profile, SocialLink } from "./profile";
 export { pipelineNodes, pipelineUi, pipelineTiming } from "./pipelineNodes";
 export type { PipelineNode } from "./pipelineNodes";
 
-export { skills } from "./skills";
-export type { Skill, SkillCategory } from "./skills";
+export { about } from "./about";
+export type { AboutCopy, AboutFact } from "./about";
+
+export { skills, skillFilters, skillCategoryLabels, skillsCopy } from "./skills";
+export type { Skill, SkillCategory, SkillFilter, SkillFilterId } from "./skills";
 
 export { projects } from "./projects";
 export type { Project, SimulatorLine } from "./projects";

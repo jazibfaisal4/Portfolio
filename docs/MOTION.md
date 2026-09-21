@@ -23,6 +23,10 @@ Lenis (`lerp` 0.1) only when the pointer is fine **and** the user has not reques
 
 Nested scroll (chat messages, mobile menu, code blocks) **must** set `data-lenis-prevent` so Lenis ignores wheel/touch inside that node.
 
+## Late-mount content
+
+Content that mounts after page load (tab switches, expanded panels, chat messages) must animate with `animate=`, or be remounted with a `key`. Never rely on `whileInView` for content that mounts late.
+
 ## Reduced motion
 
 `MotionConfig reducedMotion="user"`. Global CSS removes keyframes and sets `transition-duration: 0.01ms`. Color/border changes still apply. Content is complete with no animation. Hero lands on its final state at once.

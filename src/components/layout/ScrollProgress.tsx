@@ -8,9 +8,8 @@ export function ScrollProgress() {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 right-0 z-[90] h-[2px] origin-left bg-accent"
+      className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[2px] origin-left bg-accent"
       style={{
-        top: "calc(var(--nav-h) + env(safe-area-inset-top, 0px))",
         scaleX: scrollYProgress,
       }}
     />

@@ -35,10 +35,12 @@ body {
   margin: 0;
   background-color: var(--bg);
   color: var(--text);
-  overflow-x: hidden;
 }
 
 html {
+  /* clip (not hidden) so we do not create a second scrollport that kills sticky */
+  overflow-x: clip;
+  overflow-y: auto;
   scrollbar-color: var(--line) var(--bg);
   scrollbar-width: thin;
   scroll-behavior: smooth;
@@ -50,6 +52,8 @@ html.lenis {
 }
 
 body {
+  overflow-x: clip;
+  overflow-y: visible;
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   isolation: isolate;
 }

@@ -3,6 +3,7 @@ export const durationMs = {
   base: 320,
   slow: 640,
   hero: 600,
+  filter: 200,
 } as const;
 
 export const duration = {
@@ -10,6 +11,7 @@ export const duration = {
   base: durationMs.base / 1000,
   slow: durationMs.slow / 1000,
   hero: durationMs.hero / 1000,
+  filter: durationMs.filter / 1000,
 } as const;
 
 export const easing = [0.16, 1, 0.3, 1] as const;
@@ -41,4 +43,5 @@ export const tween = {
   base: { duration: duration.base, ease: easing },
   slow: { duration: duration.slow, ease: easing },
   hero: { duration: duration.hero, ease: easing },
+  filter: { duration: duration.filter, ease: easing },
 } as const;

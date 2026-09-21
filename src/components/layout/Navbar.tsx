@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { handleSectionLinkClick } from "./sectionLink";
+import { ScrollProgress } from "./ScrollProgress";
 
 const MobileMenu = dynamic(() => import("./MobileMenu"), { ssr: false });
 
@@ -43,7 +44,7 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-[100] border-b transition-[background-color,border-color,backdrop-filter] duration-160 ease-out",
+          "fixed inset-x-0 top-0 z-[100] w-full border-b transition-[background-color,border-color,backdrop-filter] duration-160 ease-out",
           scrolled
             ? "border-line bg-bg/80 backdrop-blur-xl"
             : "border-transparent bg-bg/40 backdrop-blur-md",
@@ -121,7 +122,13 @@ export function Navbar() {
             </button>
           </div>
         </Container>
+        <ScrollProgress />
       </header>
+      <div
+        aria-hidden="true"
+        className="w-full"
+        style={{ height: "calc(var(--nav-h) + env(safe-area-inset-top, 0px))" }}
+      />
       {menuOpen ? <MobileMenu onClose={closeMenu} onNavigate={setActive} /> : null}
     </>
   );
