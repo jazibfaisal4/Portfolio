@@ -8,6 +8,8 @@ import { MediaFrame } from "@/components/ui/MediaFrame";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TagList } from "@/components/ui/TagList";
+import { Reveal } from "@/components/motion/Reveal";
+import { MotionDemo } from "./MotionDemo";
 
 export const metadata: Metadata = {
   title: "Design system",
@@ -154,6 +156,19 @@ export default function DesignPage() {
               />
             </label>
           </div>
+        </Container>
+      </Section>
+
+      <Section id="motion">
+        <Container className="flex flex-col gap-8">
+          <Reveal>
+            <SectionHeader
+              index="// 01"
+              title="Motion"
+              intro="Reveal, stagger, magnetic pull, and smooth scroll. Toggle the OS reduce-motion setting to compare."
+            />
+          </Reveal>
+          <MotionDemo />
         </Container>
       </Section>
     </main>

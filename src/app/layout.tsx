@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Providers } from "@/components/layout/Providers";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
@@ -37,10 +38,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${sans.variable} ${mono.variable} bg-bg font-sans text-text antialiased`}>
-        <a href="#content" className="skip-link">
-          Skip to content
-        </a>
-        {children}
+        <Providers>
+          <a href="#content" className="skip-link">
+            Skip to content
+          </a>
+          {children}
+        </Providers>
       </body>
     </html>
   );

@@ -19,6 +19,9 @@
   --section-offset: calc(var(--nav-h) + 1rem);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --duration-fast: 160ms;
+  --duration-base: 320ms;
+  --duration-slow: 640ms;
+  --stagger: 60ms;
 }
 
 * {
@@ -38,6 +41,12 @@ body {
 html {
   scrollbar-color: var(--line) var(--bg);
   scrollbar-width: thin;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--section-offset);
+}
+
+html.lenis {
+  scroll-behavior: auto;
 }
 
 body {
@@ -170,5 +179,26 @@ a {
 @media (min-width: 1024px) {
   .text-body {
     font-size: 1.0625rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-name: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-motion] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
