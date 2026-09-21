@@ -3,7 +3,7 @@ import { SHOW_UNVERIFIED } from "./profile";
 export { SHOW_UNVERIFIED, profile } from "./profile";
 export type { Profile, SocialLink } from "./profile";
 
-export { pipelineNodes } from "./pipelineNodes";
+export { pipelineNodes, pipelineUi, pipelineTiming } from "./pipelineNodes";
 export type { PipelineNode } from "./pipelineNodes";
 
 export { skills } from "./skills";

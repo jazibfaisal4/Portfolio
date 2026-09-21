@@ -7,6 +7,22 @@ export type PipelineNode = {
   verified: boolean;
 };
 
+/** Chrome labels for the hero pipeline. Not facts. */
+export const pipelineUi = {
+  title: "Interview pipeline",
+  trace: "Trace a request",
+  illustrative: "Illustrative flow",
+  whatIBuilt: "What I built",
+  close: "Close",
+  selectHint: "Select a stage to read what I built.",
+  tracing: "Tracing an illustrative request.",
+} as const;
+
+export const pipelineTiming = {
+  traceMs: 3000,
+  idleEveryMs: 8000,
+} as const;
+
 export const pipelineNodes: readonly PipelineNode[] = [
   {
     id: 1,

@@ -3,6 +3,7 @@ import { cn } from "@/lib/cn";
 type ChipProps = {
   children: string;
   className?: string;
+  preserveCase?: boolean;
 };
 
 function formatChipLabel(label: string) {
@@ -10,15 +11,17 @@ function formatChipLabel(label: string) {
   return words.length > 0 && words.length <= 3 ? label.toUpperCase() : label;
 }
 
-export function Chip({ children, className }: ChipProps) {
+export function Chip({ children, className, preserveCase = false }: ChipProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border border-line bg-surface px-3 py-1 text-label text-accent",
+        "inline-flex min-w-0 max-w-full flex-wrap items-center overflow-hidden rounded-full border border-line bg-surface px-3 py-1 text-label text-accent",
         className,
       )}
     >
-      {formatChipLabel(children)}
+      <span className="min-w-0 max-w-full overflow-hidden text-ellipsis break-words [overflow-wrap:anywhere]">
+        {preserveCase ? children : formatChipLabel(children)}
+      </span>
     </span>
   );
 }
