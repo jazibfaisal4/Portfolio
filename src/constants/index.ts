@@ -12,8 +12,14 @@ export type { AboutCopy, AboutFact } from "./about";
 export { skills, skillFilters, skillCategoryLabels, skillsCopy } from "./skills";
 export type { Skill, SkillCategory, SkillFilter, SkillFilterId } from "./skills";
 
-export { projects } from "./projects";
-export type { Project, SimulatorLine } from "./projects";
+export { projects, projectsCopy, simulatorTiming } from "./projects";
+export type {
+  Project,
+  ProjectGroup,
+  ProjectMediaImage,
+  ProjectMediaVideo,
+  SimulatorLine,
+} from "./projects";
 
 export { experience } from "./experience";
 export type { ExperienceItem } from "./experience";

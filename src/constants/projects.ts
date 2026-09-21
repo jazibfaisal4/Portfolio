@@ -3,6 +3,19 @@ export type SimulatorLine = {
   text: string;
 };
 
+export type ProjectMediaImage = {
+  src?: string;
+  alt: string;
+};
+
+export type ProjectMediaVideo = {
+  src?: string;
+  poster?: string;
+  title: string;
+};
+
+export type ProjectGroup = "specialized-ai";
+
 export type Project = {
   id: string;
   name: string;
@@ -17,6 +30,9 @@ export type Project = {
   liveUrl?: string;
   myPart?: string;
   teammates?: string;
+  group?: ProjectGroup;
+  images?: readonly ProjectMediaImage[];
+  video?: ProjectMediaVideo;
   // TODO(jazib): screenshots and optional demo video where noted in FACTS.md
   mediaTodo?: string;
   simulator?: {
@@ -25,12 +41,32 @@ export type Project = {
   };
 };
 
+export const projectsCopy = {
+  index: "// 03",
+  title: "Projects",
+  intro:
+    "The AI interview system I'm building, my university Library Management System, Apple 3D Website, and Brainwave AI UI.",
+  pipelineLabel: "Interview pipeline",
+  expand: "Read more",
+  collapse: "Show less",
+  viewSite: "View site",
+  opensInNewTab: "opens in a new tab",
+  reposTitle: "Repositories",
+  screenshotSoon: "Screenshot coming soon",
+  // TODO(jazib): add repository or demo links for the interview system
+} as const;
+
+export const simulatorTiming = {
+  lineDelayMs: 800,
+} as const;
+
 export const projects: readonly Project[] = [
   {
     id: "ai-interview-system",
     name: "Adaptive Multimodal AI Interview & Candidate Assessment System",
+    // 42 words. Max 45. First person, from FACTS.md only.
     description:
-      "In progress. 3-person team project, my final-month project in the PureLogics training program (it is not my university final year project). Built and working: real-time audio over LiveKit; a LiveKit Agents worker with custom speech-to-text, LLM and text-to-speech stages; proactive greeting and first question; barge-in (the candidate can interrupt the AI), silence detection, noise suppression, voice-triggered interview end. Speech-to-text: OpenAI Whisper (small model), local, CPU. Text-to-speech: ElevenLabs primary, local Meta MMS-TTS fallback. Voice sessions link to real candidate application records. Completed interviews are saved as evaluated results in PostgreSQL (Alembic migrations).",
+      "I own the real-time voice interview and the recruiter dashboard on this 3-person team project, my final-month project in the PureLogics training program. It uses audio over LiveKit, a LiveKit Agents worker, barge-in, silence detection, noise suppression, and voice-triggered interview end.",
     stack: ["LiveKit", "LiveKit Agents", "Whisper", "ElevenLabs", "PostgreSQL", "Alembic", "Python"],
     status: "In progress",
     verified: true,
@@ -39,7 +75,12 @@ export const projects: readonly Project[] = [
     badge: "PureLogics final project",
     myPart: "the real-time voice interview and the recruiter dashboard",
     teammates: "JD/CV eligibility matching, and interview question and assessment logic",
-    mediaTodo: "TODO(jazib) screenshots (voice screen, dashboard) and an optional 30 to 60 second demo video",
+    mediaTodo:
+      "TODO(jazib) screenshots (voice screen, dashboard) and an optional 30 to 60 second demo video",
+    images: [
+      { alt: "Voice interview screen" },
+      { alt: "Recruiter dashboard" },
+    ],
     simulator: {
       label: "Illustrative simulation",
       lines: [
@@ -49,7 +90,8 @@ export const projects: readonly Project[] = [
         },
         {
           speaker: "Candidate",
-          text: "In our voice pipeline I chose local Whisper over a cloud API. It's free and has no quota, but it's slower on a CPU.",
+          text:
+            "In our voice pipeline I chose local Whisper over a cloud API. It's free and has no quota, but it's slower on a CPU.",
         },
         {
           speaker: "Adaptive follow-up",
@@ -70,6 +112,7 @@ export const projects: readonly Project[] = [
     badge: "Final year project",
     period: "Jan 2026 to Aug 2026",
     mediaTodo: "TODO(jazib) screenshots",
+    images: [{ alt: "Library Management System" }],
   },
   {
     id: "apple-3d-website",
@@ -94,29 +137,32 @@ export const projects: readonly Project[] = [
   {
     id: "rag-document-engine",
     name: "RAG document engine",
-    description: "Unverified Specialized AI Systems card.",
+    description: "Unverified.",
     stack: [],
     status: "Unverified",
     verified: false,
     kind: "project",
+    group: "specialized-ai",
   },
   {
     id: "multi-agent-research-coordinator",
     name: "multi-agent research coordinator",
-    description: "Unverified Specialized AI Systems card.",
+    description: "Unverified.",
     stack: [],
     status: "Unverified",
     verified: false,
     kind: "project",
+    group: "specialized-ai",
   },
   {
     id: "fine-tuned-bert-classifier",
     name: "fine-tuned BERT classifier",
-    description: "Unverified Specialized AI Systems card.",
+    description: "Unverified.",
     stack: [],
     status: "Unverified",
     verified: false,
     kind: "project",
+    group: "specialized-ai",
   },
   {
     id: "voice-eval-interviewer",
