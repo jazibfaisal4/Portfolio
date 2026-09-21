@@ -1,11 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import dynamic from "next/dynamic";
-import { onlyVerified, pipelineNodes, projects, type Project } from "@/constants";
+import {
+  onlyVerified,
+  pipelineNodes,
+  projects,
+  projectsCopy,
+  type Project,
+  type ProjectMediaImage,
+} from "@/constants";
 import { Chip } from "@/components/ui/Chip";
 import { Card } from "@/components/ui/Card";
 import { MediaFrame } from "@/components/ui/MediaFrame";
 import { TagList } from "@/components/ui/TagList";
+import { cn } from "@/lib/cn";
 import { ExpandableText } from "./ExpandableText";
 import { PipelineStrip } from "./PipelineStrip";
 
@@ -29,10 +38,62 @@ type FlagshipCardProps = {
   project: Project;
 };
 
+const FLAGSHIP_SINGLE_SIZES = "(min-width: 1024px) 520px, (min-width: 768px) 45vw, calc(100vw - 4.5rem)";
+const FLAGSHIP_SWITCHER_SIZES =
+  "(min-width: 1024px) 1056px, (min-width: 768px) calc(100vw - 7rem), calc(100vw - 4.5rem)";
+
+function ScreenshotSwitcher({
+  images,
+  sizes,
+}: {
+  images: readonly ProjectMediaImage[];
+  sizes: string;
+}) {
+  const [active, setActive] = useState(0);
+  const current = images[active] ?? images[0];
+
+  if (!current) {
+    return null;
+  }
+
+  return (
+    <div className="min-w-0">
+      <MediaFrame
+        src={current.src}
+        alt={current.alt}
+        caption={current.caption}
+        width={current.width}
+        height={current.height}
+        sizes={sizes}
+      />
+      <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label={projectsCopy.screenshotSwitcher}>
+        {images.map((image, index) => (
+          <button
+            key={image.alt}
+            type="button"
+            aria-pressed={index === active}
+            aria-label={image.switcherAriaLabel ?? image.alt}
+            onClick={() => setActive(index)}
+            className={cn(
+              "inline-flex min-h-11 min-w-[44px] flex-col items-center justify-center rounded border px-3 py-1.5 text-label transition-[border-color,color] duration-160 ease-out",
+              index === active
+                ? "border-accent text-accent"
+                : "border-line text-text-dim hover-ok:border-line-strong hover-ok:text-text",
+            )}
+          >
+            {image.switcherLabel ?? String(index + 1)}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function FlagshipCard({ project }: FlagshipCardProps) {
   const simulator = project.simulator;
   const images = project.images ?? [];
   const video = project.video;
+  const useSwitcher = images.length > 1;
 
   return (
     <Card variant="featured" className="min-w-0 p-4 md:p-6 lg:p-8">
@@ -58,21 +119,33 @@ export function FlagshipCard({ project }: FlagshipCardProps) {
       </div>
 
       {images.length > 0 || video ? (
-        <div className="mt-8 grid min-w-0 gap-4 md:grid-cols-2 md:gap-6">
-          {images.map((image) => (
-            <MediaFrame
-              key={image.alt}
-              src={image.src}
-              alt={image.alt}
-              sizes="(min-width: 1024px) 520px, (min-width: 768px) 45vw, 100vw"
-            />
-          ))}
+        <div
+          className={cn(
+            "mt-8 grid min-w-0 gap-4",
+            !useSwitcher ? "md:grid-cols-2 md:gap-6" : "",
+          )}
+        >
+          {useSwitcher ? (
+            <ScreenshotSwitcher images={images} sizes={FLAGSHIP_SWITCHER_SIZES} />
+          ) : (
+            images.map((image) => (
+              <MediaFrame
+                key={image.alt}
+                src={image.src}
+                alt={image.alt}
+                caption={image.caption}
+                width={image.width}
+                height={image.height}
+                sizes={FLAGSHIP_SINGLE_SIZES}
+              />
+            ))
+          )}
           {video ? (
             <MediaFrame
               videoSrc={video.src}
               poster={video.poster}
               alt={video.title}
-              sizes="(min-width: 1024px) 520px, (min-width: 768px) 45vw, 100vw"
+              sizes={useSwitcher ? FLAGSHIP_SWITCHER_SIZES : FLAGSHIP_SINGLE_SIZES}
             />
           ) : null}
         </div>

@@ -55,7 +55,6 @@ export function formatTelemetry(input: TelemetryInput): string[] {
 }
 
 export const assistant = {
-  index: "// 04",
   title: "AI Lab",
   intro: "Ask about my projects, stack, and background.",
   consoleTitle: "assistant",

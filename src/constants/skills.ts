@@ -33,7 +33,6 @@ export const skillFilters: readonly SkillFilter[] = [
 ];
 
 export const skillsCopy = {
-  index: "// 02",
   title: "Skills",
   intro: "Tools I used on the interview system, at PureLogics, and on my university and web projects.",
   tablistLabel: "Filter skills by domain",

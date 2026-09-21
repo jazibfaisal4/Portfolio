@@ -84,6 +84,44 @@ export function parseChatHeaders(headers: Headers): ChatMeta {
   return meta;
 }
 
+export class ContactHttpError extends Error {
+  readonly status: number;
+  readonly detail: string;
+
+  constructor(status: number, detail: string) {
+    super(detail || `Contact request failed (${status})`);
+    this.name = "ContactHttpError";
+    this.status = status;
+    this.detail = detail;
+  }
+}
+
+export type ContactPayload = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  website: string;
+};
+
+export async function submitContact(payload: ContactPayload): Promise<void> {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    cache: "no-store",
+  });
+  if (!response.ok) {
+    let detail = "";
+    try {
+      detail = extractDetail(await response.json());
+    } catch {
+      detail = "";
+    }
+    throw new ContactHttpError(response.status, detail);
+  }
+}
+
 export async function fetchHealth(): Promise<HealthResponse> {
   const response = await fetch("/api/health", { method: "GET", cache: "no-store" });
   if (!response.ok) {

@@ -6,7 +6,7 @@ Reference: the PNG exports of Portfolio-UI.pdf in `design-reference/`. Match its
 
 - Remove every invented number (latency, cosine, memory, versions, "active pipelines", contribution graph).
 - Mono labels: at least 12px, at least 4.5:1 contrast, and ALL-CAPS only for tags of three words or fewer. Headings and body are sentence case.
-- Section index labels ("// 01") stay, but keep them short and readable.
+- No section index numbers; headings only.
 - The AI console is real (see P8). Do not call it a "simulator" or "synthetic".
 - No "Secure dispatch", "TLS 1.3 encrypted", "Verified 2026" or version strings.
 - Icons in the nav that do nothing are removed.

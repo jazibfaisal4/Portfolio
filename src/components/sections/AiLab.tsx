@@ -10,7 +10,7 @@ export function AiLab() {
     <Section id="ai-lab">
       <Container>
         <Reveal>
-          <SectionHeader index={assistant.index} title={assistant.title} intro={assistant.intro} />
+          <SectionHeader title={assistant.title} intro={assistant.intro} />
         </Reveal>
         <div className="mx-auto mt-10 w-full max-w-[880px]">
           <AiLabConsole />

@@ -6,6 +6,11 @@ export type SimulatorLine = {
 export type ProjectMediaImage = {
   src?: string;
   alt: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+  switcherLabel?: string;
+  switcherAriaLabel?: string;
 };
 
 export type ProjectMediaVideo = {
@@ -42,7 +47,6 @@ export type Project = {
 };
 
 export const projectsCopy = {
-  index: "// 03",
   title: "Projects",
   intro:
     "The AI interview system I'm building, my university Library Management System, Apple 3D Website, and Brainwave AI UI.",
@@ -53,6 +57,7 @@ export const projectsCopy = {
   opensInNewTab: "opens in a new tab",
   reposTitle: "Repositories",
   screenshotSoon: "Screenshot coming soon",
+  screenshotSwitcher: "Recruiter dashboard screenshots",
   // TODO(jazib): add repository or demo links for the interview system
 } as const;
 
@@ -75,11 +80,25 @@ export const projects: readonly Project[] = [
     badge: "PureLogics final project",
     myPart: "the real-time voice interview and the recruiter dashboard",
     teammates: "JD/CV eligibility matching, and interview question and assessment logic",
-    mediaTodo:
-      "TODO(jazib) screenshots (voice screen, dashboard) and an optional 30 to 60 second demo video",
+    // TODO(jazib): optional 30 to 60 second demo video
     images: [
-      { alt: "Voice interview screen" },
-      { alt: "Recruiter dashboard" },
+      {
+        src: "/projects/interview-dashboard.webp",
+        alt: "Recruiter dashboard (in progress): live counts of applicants, eligible candidates and job postings",
+        caption: "Recruiter dashboard, in progress",
+        switcherLabel: "Overview",
+        switcherAriaLabel: "Show dashboard overview",
+        width: 1600,
+        height: 766,
+      },
+      {
+        src: "/projects/interview-dashboard-jobs.webp",
+        alt: "Recruiter dashboard: creating a job posting and configuring AI screening rules",
+        switcherLabel: "Job form",
+        switcherAriaLabel: "Show job posting form",
+        width: 1600,
+        height: 766,
+      },
     ],
     simulator: {
       label: "Illustrative simulation",
@@ -111,8 +130,15 @@ export const projects: readonly Project[] = [
     kind: "project",
     badge: "Final year project",
     period: "Jan 2026 to Aug 2026",
-    mediaTodo: "TODO(jazib) screenshots",
-    images: [{ alt: "Library Management System" }],
+    images: [
+      {
+        src: "/projects/LMS-Dashboard.webp",
+        alt: "Library Management System desktop app: admin dashboard",
+        caption: "Desktop app, admin dashboard",
+        width: 1600,
+        height: 803,
+      },
+    ],
   },
   {
     id: "apple-3d-website",

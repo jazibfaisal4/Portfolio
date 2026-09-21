@@ -178,10 +178,10 @@ export function Skills() {
       <Container>
         <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between xl:gap-10">
           <Reveal>
-            <SectionHeader index={skillsCopy.index} title={skillsCopy.title} intro={skillsCopy.intro} />
+            <SectionHeader title={skillsCopy.title} intro={skillsCopy.intro} />
           </Reveal>
 
-          <Reveal className="min-w-0 xl:shrink-0 xl:pt-2">
+          <Reveal className="min-w-0 xl:shrink-0">
             <div
               role="tablist"
               aria-label={skillsCopy.tablistLabel}

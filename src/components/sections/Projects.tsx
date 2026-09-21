@@ -41,7 +41,7 @@ export function Projects() {
     <Section id="projects">
       <Container>
         <Reveal>
-          <SectionHeader index={projectsCopy.index} title={projectsCopy.title} intro={projectsCopy.intro} />
+          <SectionHeader title={projectsCopy.title} intro={projectsCopy.intro} />
         </Reveal>
 
         <Stagger className="mt-8 grid min-w-0 grid-cols-1 items-start gap-4 md:mt-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3">

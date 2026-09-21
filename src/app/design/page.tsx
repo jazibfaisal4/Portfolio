@@ -47,7 +47,6 @@ export default function DesignPage() {
       <Section id="tokens">
         <Container className="flex flex-col gap-16">
           <SectionHeader
-            index="// 00"
             title="Design system"
             intro="Dev-only gallery of tokens and primitives. Remove src/app/design before deploy."
           />
@@ -163,7 +162,6 @@ export default function DesignPage() {
         <Container className="flex flex-col gap-8">
           <Reveal>
             <SectionHeader
-              index="// 01"
               title="Motion"
               intro="Reveal, stagger, magnetic pull, and smooth scroll. Toggle the OS reduce-motion setting to compare."
             />

@@ -41,8 +41,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
           key={image.alt}
           src={image.src}
           alt={image.alt}
+          caption={image.caption}
+          width={image.width}
+          height={image.height}
           className="mt-auto"
-          sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 100vw"
+          sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, calc(100vw - 4.5rem)"
         />
       ))}
       {project.liveUrl ? (

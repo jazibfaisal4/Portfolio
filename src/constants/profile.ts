@@ -36,6 +36,20 @@ export type Profile = {
   contact: {
     heading: string;
     subtext: string;
+    emailLabel: string;
+    linkedinLabel: string;
+    githubLabel: string;
+    resumeTitle: string;
+    resumeCta: string;
+    nameLabel: string;
+    emailFieldLabel: string;
+    subjectLabel: string;
+    messageLabel: string;
+    submit: string;
+    sending: string;
+    success: string;
+    errorFallback: string;
+    mailtoFallback: string;
   };
   socials: readonly SocialLink[];
 };
@@ -69,6 +83,20 @@ export const profile: Profile = {
   contact: {
     heading: "Have a role or project in mind?",
     subtext: "Send a message and I'll reply by email.",
+    emailLabel: "Email",
+    linkedinLabel: "LinkedIn",
+    githubLabel: "GitHub",
+    resumeTitle: "Resume",
+    resumeCta: "Download resume",
+    nameLabel: "Name",
+    emailFieldLabel: "Email",
+    subjectLabel: "Subject",
+    messageLabel: "Message",
+    submit: "Send message",
+    sending: "Sending",
+    success: "Message sent. I'll reply by email.",
+    errorFallback: "Couldn't send your message.",
+    mailtoFallback: "Or email me directly",
   },
   socials: [
     { name: "GitHub", href: "https://github.com/jazibfaisal4" },

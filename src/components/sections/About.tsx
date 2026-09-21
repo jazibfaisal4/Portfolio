@@ -11,7 +11,7 @@ export function About() {
       <Container>
         <div className="grid gap-8 md:grid-cols-2 md:items-start md:gap-12">
           <Reveal>
-            <SectionHeader index={about.index} title={about.title} />
+            <SectionHeader title={about.title} />
           </Reveal>
           <Reveal>
             <p className="text-body text-text-dim">{about.statement}</p>
