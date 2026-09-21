@@ -33,6 +33,12 @@ class RetrieveTests(unittest.TestCase):
     def test_experience(self):
         self.assertEqual(self.top_ids("Where did he do his internship?")[0], "experience-purelogics")
 
+    def test_technologies_question_reaches_skills(self):
+        self.assertIn("skills-ai", self.top_ids("What AI technologies do you use?", k=4))
+
+    def test_open_to_work_reaches_contact(self):
+        self.assertEqual(self.top_ids("Is he open to work?")[0], "contact")
+
     def test_off_topic_returns_nothing(self):
         self.assertEqual(self.index.search("write me a poem about the ocean"), [])
 

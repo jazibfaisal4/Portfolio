@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
         { source: "/api/chat", destination: `${BACKEND_URL}/api/chat` },
         { source: "/api/contact", destination: `${BACKEND_URL}/api/contact` },
         { source: "/api/github/repos", destination: `${BACKEND_URL}/api/github/repos` },
+        { source: "/api/health", destination: `${BACKEND_URL}/health` },
       ],
       afterFiles: [],
       fallback: [],

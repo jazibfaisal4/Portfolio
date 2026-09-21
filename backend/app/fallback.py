@@ -13,7 +13,7 @@ def answer_from_chunks(results: Sequence[tuple[Chunk, float]], contact_email: st
             f"You can email him at {contact_email} and he'll reply."
         )
     top = results[0][0]
-    text = f"{top.title}: {top.text}"
+    text = top.text  # the source chips already show which note this came from
     related = [c.title for c, _ in results[1:3]]
     if related:
         text += "\n\nRelated: " + ", ".join(related) + "."

@@ -2,12 +2,15 @@
 
 import { MotionConfig } from "framer-motion";
 import type { ReactNode } from "react";
+import { AssistantProvider } from "@/components/ai/AssistantProvider";
 import { SmoothScroll } from "./SmoothScroll";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <MotionConfig reducedMotion="user">
-      <SmoothScroll>{children}</SmoothScroll>
+      <SmoothScroll>
+        <AssistantProvider>{children}</AssistantProvider>
+      </SmoothScroll>
     </MotionConfig>
   );
 }

@@ -30,6 +30,17 @@ export type { EducationItem } from "./education";
 export { navLinks } from "./navLinks";
 export type { NavLink } from "./navLinks";
 
+export {
+  assistant,
+  sourceTitles,
+  sourceTitle,
+  formatTelemetry,
+  MESSAGE_MAX_LENGTH,
+  MESSAGE_COUNTER_AT,
+  HISTORY_LIMIT,
+} from "./assistant";
+export type { TelemetryInput } from "./assistant";
+
 export function onlyVerified<T extends { verified: boolean }>(items: readonly T[]): T[] {
   if (SHOW_UNVERIFIED) {
     return [...items];

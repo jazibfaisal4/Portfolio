@@ -6,6 +6,7 @@ from collections.abc import AsyncIterator
 
 import httpx
 
+from .cleaner import StreamCleaner
 from .config import Settings
 from .llm_parse import parse_gemini_sse_line, parse_openai_sse_line
 
@@ -18,7 +19,7 @@ class LLMError(Exception):
     """Provider failure. Details are logged, never sent to the client."""
 
 
-async def stream_answer(
+async def _raw_stream(
     settings: Settings, system: str, messages: list[dict[str, str]]
 ) -> AsyncIterator[str]:
     if settings.llm_provider == "gemini":
@@ -29,6 +30,20 @@ async def stream_answer(
             yield piece
     else:
         raise LLMError(f"Unknown LLM_PROVIDER: {settings.llm_provider}")
+
+
+async def stream_answer(
+    settings: Settings, system: str, messages: list[dict[str, str]]
+) -> AsyncIterator[str]:
+    """Provider stream with names repaired across chunk boundaries."""
+    cleaner = StreamCleaner()
+    async for raw in _raw_stream(settings, system, messages):
+        out = cleaner.feed(raw)
+        if out:
+            yield out
+    tail = cleaner.flush()
+    if tail:
+        yield tail
 
 
 async def _stream_gemini(
