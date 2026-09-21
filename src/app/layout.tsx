@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
 import { Providers } from "@/components/layout/Providers";
 import "./globals.css";
 
@@ -42,7 +44,9 @@ export default function RootLayout({
           <a href="#content" className="skip-link">
             Skip to content
           </a>
+          <Navbar />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

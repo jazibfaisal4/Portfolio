@@ -20,6 +20,13 @@ export type Profile = {
   linkedin: string;
   // TODO(jazib): replace the file with the latest one
   resume: string;
+  /** Displayed as "Updated <Month Year>" in the footer. Not a verification claim. */
+  updated: string;
+  notFound: {
+    title: string;
+    body: string;
+    homeLabel: string;
+  };
   hero: {
     pill: string;
     headline: string;
@@ -46,6 +53,12 @@ export const profile: Profile = {
   github: "https://github.com/jazibfaisal4",
   linkedin: "https://www.linkedin.com/in/jazib-faisal-5a8978322/",
   resume: "/Jazib_Faisal_Resume.pdf",
+  updated: "September 2026",
+  notFound: {
+    title: "Page not found",
+    body: "That address is not part of this site.",
+    homeLabel: "Back home",
+  },
   hero: {
     pill: "Open to AI/ML opportunities",
     headline: "I build voice-first AI systems and the full-stack products around them.",
