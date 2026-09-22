@@ -1,26 +1,33 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
+import { Providers } from "@/components/layout/Providers";
 import "./globals.css";
 
-const inter = Inter({
+const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  display: "swap",
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const mono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  display: "swap",
+  variable: "--font-mono",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Jazib Faisal | Portfolio",
+  title: "Jazib Faisal | AI/ML developer and full-stack developer",
   description:
-    "Jazib Faisal is a BSCS Student and Full-Stack Developer building modern web and desktop applications with premium UX.",
+    "I build voice-first AI systems and the full-stack products around them. Fresh BSCS graduate building a real-time AI interview system.",
   metadataBase: new URL("https://portfolio-jazib.vercel.app"),
   openGraph: {
-    title: "Jazib Faisal | BSCS Student & Full-Stack Developer",
+    title: "Jazib Faisal | AI/ML developer and full-stack developer",
     description:
-      "Portfolio featuring Apple 3D Website, Brainwave AI UI, and a Final Year Library Management System for Quaid-e-Azam Library.",
+      "Fresh BSCS graduate. I'm building a real-time AI interview system: live audio over LiveKit, local Whisper speech-to-text and a recruiter dashboard.",
     type: "website",
   },
 };
@@ -32,7 +39,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} bg-surface font-body`}>{children}</body>
+      <body className={`${sans.variable} ${mono.variable} bg-bg font-sans text-text antialiased`}>
+        <Providers>
+          <a href="#content" className="skip-link">
+            Skip to content
+          </a>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
+      </body>
     </html>
   );
 }

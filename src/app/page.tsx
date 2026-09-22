@@ -1,28 +1,25 @@
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
-import { MobileDock } from "@/components/MobileDock";
-import { Navbar } from "@/components/Navbar";
-import { PageTransition } from "@/components/PageTransition";
-import { Projects } from "@/components/Projects";
-import { SkillsBento } from "@/components/Skills";
+import { AssistantWidgets } from "@/components/ai/AssistantWidgets";
+import { About } from "@/components/sections/About";
+import { AiLab } from "@/components/sections/AiLab";
+import { Contact } from "@/components/sections/Contact";
+import { Experience } from "@/components/sections/Experience";
+import { Hero } from "@/components/sections/Hero";
+import { Projects } from "@/components/sections/Projects";
+import { Skills } from "@/components/sections/Skills";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-surface text-on-surface">
-      <div className="mx-auto pb-8">
-        <PageTransition>
-          <Navbar />
-          <main>
-            <Hero />
-            <SkillsBento />
-            <Projects />
-            <Contact />
-          </main>
-        </PageTransition>
-      </div>
-      <MobileDock />
-      <Footer />
-    </div>
+    <>
+      <main id="content">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <AiLab />
+        <Experience />
+        <Contact />
+      </main>
+      <AssistantWidgets />
+    </>
   );
 }

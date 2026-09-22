@@ -1,0 +1,235 @@
+[
+  {
+    "id": "about",
+    "title": "Who Jazib is",
+    "text": "Jazib Faisal is a fresh BSCS graduate of the University of Education (2026) and an AI/ML and full-stack developer in Lahore. He completed a Python and AI/ML trainee role at PureLogics. He is building the real-time voice interview and recruiter dashboard for a three-person AI interview system, and his university final year project was a native Electron.js Library Management System for Quaid-e-Azam Library. He is on GitHub as jazibfaisal4 and on LinkedIn at linkedin.com/in/jazib-faisal-5a8978322.",
+    "tags": [
+      "about",
+      "who",
+      "introduction",
+      "background",
+      "developer"
+    ]
+  },
+  {
+    "id": "contact",
+    "title": "Contact and availability",
+    "text": "Jazib is open to AI/ML opportunities. The best way to reach him is email at jazibfaisal66@gmail.com, or through LinkedIn or the contact form on this site.",
+    "tags": [
+      "contact",
+      "hire",
+      "hiring",
+      "availability",
+      "opportunities",
+      "email",
+      "job"
+    ]
+  },
+  {
+    "id": "education",
+    "title": "Education",
+    "text": "Jazib is a fresh BSCS (computer science) graduate of the University of Education (2026). His final year project was the Library Management System. More details are on his resume, which can be downloaded from the Resume button on this site.",
+    "tags": [
+      "education",
+      "degree",
+      "university",
+      "graduate",
+      "bscs",
+      "resume",
+      "cv",
+      "university of education",
+      "final year",
+      "fyp"
+    ]
+  },
+  {
+    "id": "experience-purelogics",
+    "title": "Experience: PureLogics",
+    "text": "Jazib was a Python and AI/ML Developer Trainee at PureLogics in Lahore, Pakistan, from June 2026 to September 2026 (completed). He worked on Python, data analysis and machine learning model development with Pandas, NumPy and Scikit-Learn, and on integrating AI endpoints into full-stack applications.",
+    "tags": [
+      "experience",
+      "trainee",
+      "purelogics",
+      "internship",
+      "work",
+      "python",
+      "machine learning"
+    ]
+  },
+  {
+    "id": "interview-system",
+    "title": "AI Interview System (overview)",
+    "text": "The Adaptive Multimodal AI Interview & Candidate Assessment System is a 3-person team project and the final-month project of Jazib's PureLogics training, currently in progress. Candidates take a spoken interview with an AI interviewer, and recruiters review results in a dashboard. Jazib owns the real-time voice interview and the recruiter dashboard. His teammates build JD/CV eligibility matching and the interview question and assessment logic.",
+    "tags": [
+      "project",
+      "interview",
+      "ai",
+      "flagship",
+      "recruiter",
+      "dashboard",
+      "team",
+      "capstone",
+      "training",
+      "purelogics"
+    ]
+  },
+  {
+    "id": "voice-pipeline",
+    "title": "Voice pipeline",
+    "text": "The voice interview uses real-time audio over LiveKit and a LiveKit Agents worker with custom speech-to-text, LLM and text-to-speech stages. The AI greets the candidate and asks the first question proactively. Barge-in (the candidate can interrupt the AI), silence detection, noise suppression and voice-triggered interview end all work end to end.",
+    "tags": [
+      "voice",
+      "livekit",
+      "agents",
+      "pipeline",
+      "barge-in",
+      "real-time",
+      "audio",
+      "vad"
+    ]
+  },
+  {
+    "id": "stt-tts",
+    "title": "Speech-to-text and text-to-speech choices",
+    "text": "Speech-to-text uses OpenAI Whisper (the small model) running locally on CPU, which is free and has no quota. Text-to-speech uses ElevenLabs as the primary voice, with a local fallback (Meta MMS-TTS) if the quota or rate limit fails. The team chose this cloud and local hybrid because the development laptop has no dedicated GPU.",
+    "tags": [
+      "stt",
+      "tts",
+      "whisper",
+      "elevenlabs",
+      "speech",
+      "gpu",
+      "architecture",
+      "decision"
+    ]
+  },
+  {
+    "id": "english-switch",
+    "title": "Switching the interview to English",
+    "text": "The team originally planned Roman Urdu support. With the supervisor's approval they moved the whole pipeline (speech-to-text, LLM and text-to-speech) to English, because speech recognition garbled English and Roman Urdu technical terms.",
+    "tags": [
+      "urdu",
+      "english",
+      "language",
+      "decision",
+      "tradeoff",
+      "roman urdu"
+    ]
+  },
+  {
+    "id": "persistence",
+    "title": "Data and persistence",
+    "text": "Voice sessions are linked to real candidate application records. Completed interviews are saved as evaluated results in PostgreSQL, with Alembic migrations for candidates, job postings, applications and interview results. Saving is idempotent and only happens for eligible candidates with genuine evaluations.",
+    "tags": [
+      "postgresql",
+      "database",
+      "alembic",
+      "migrations",
+      "storage",
+      "db",
+      "results"
+    ]
+  },
+  {
+    "id": "library-system",
+    "title": "Library Management System",
+    "text": "The Library Management System for Quaid-e-Azam Library is a native Electron.js desktop app with a React.js frontend and a Node.js and Express backend, using MySQL through Sequelize ORM. It offers real-time automated book tracking, secure database architecture and native desktop integration. It was built from January 2026 to August 2026 and is completed. It was Jazib's final year project at the University of Education.",
+    "tags": [
+      "project",
+      "library",
+      "electron",
+      "desktop",
+      "mysql",
+      "sequelize",
+      "node",
+      "express",
+      "react",
+      "final year",
+      "fyp",
+      "university"
+    ]
+  },
+  {
+    "id": "apple-3d",
+    "title": "Apple 3D Website",
+    "text": "The Apple 3D Website is an immersive product showcase with high-fidelity 3D model interaction and smooth motion, built with Three.js, Framer Motion and Tailwind. Live demo: https://i-phone-3-d-website-omega.vercel.app/",
+    "tags": [
+      "project",
+      "3d",
+      "threejs",
+      "frontend",
+      "animation",
+      "live"
+    ]
+  },
+  {
+    "id": "brainwave-ui",
+    "title": "Brainwave AI UI",
+    "text": "Brainwave AI UI is a futuristic AI landing page with layered components and a polished presentation, built with React, Tailwind and Framer Motion. Live demo: https://brain-wave-1ymq.vercel.app/",
+    "tags": [
+      "project",
+      "ui",
+      "landing",
+      "react",
+      "tailwind",
+      "frontend",
+      "live"
+    ]
+  },
+  {
+    "id": "skills-ai",
+    "title": "Skills: AI/ML and voice",
+    "text": "Python, Pandas, NumPy, Scikit-Learn, data analysis and ML model development. Speech-to-text with Whisper via Hugging Face transformers. Real-time voice with LiveKit and LiveKit Agents. ElevenLabs for text-to-speech.",
+    "tags": [
+      "skills",
+      "stack",
+      "python",
+      "ml",
+      "ai",
+      "whisper",
+      "livekit",
+      "scikit-learn",
+      "pandas"
+    ]
+  },
+  {
+    "id": "skills-web",
+    "title": "Skills: web and backend",
+    "text": "Frontend: Next.js (App Router), React.js, TypeScript, Tailwind CSS, Framer Motion and Zustand. Backend and data: Node.js, Express.js, PostgreSQL, MySQL, Sequelize ORM, Prisma, Supabase, REST APIs and Alembic migrations.",
+    "tags": [
+      "skills",
+      "stack",
+      "frontend",
+      "backend",
+      "nextjs",
+      "react",
+      "typescript",
+      "node",
+      "postgresql"
+    ]
+  },
+  {
+    "id": "skills-desktop",
+    "title": "Skills: desktop",
+    "text": "Electron.js desktop apps, desktop UX patterns, state management and offline-first thinking.",
+    "tags": [
+      "skills",
+      "stack",
+      "desktop",
+      "electron"
+    ]
+  },
+  {
+    "id": "scope",
+    "title": "Level and scope",
+    "text": "Jazib is a fresh graduate. His professional experience is a three-month trainee role at PureLogics. His larger projects are his university final year project and a team project from his PureLogics training, so he presents them as such.",
+    "tags": [
+      "level",
+      "junior",
+      "fresh",
+      "graduate",
+      "experience",
+      "scope"
+    ]
+  }
+]
