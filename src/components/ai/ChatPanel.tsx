@@ -122,7 +122,7 @@ export default function ChatPanel({ variant }: ChatPanelProps) {
           {assistant.footnoteBefore}{" "}
           <a
             href={assistant.emailHref}
-            className="text-accent underline underline-offset-2"
+            className="inline-flex min-h-11 items-center text-accent underline underline-offset-2"
           >
             {assistant.footnoteLink}
           </a>{" "}

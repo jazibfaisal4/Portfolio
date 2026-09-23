@@ -57,8 +57,6 @@ Fonts: Plus Jakarta Sans (`--font-sans`), JetBrains Mono (`--font-mono`).
 
 ## Pre-deploy checklist
 
-- [ ] Delete `src/app/design` before deploy. The production `notFound()` guard is not a substitute; the route must not ship.
-- [ ] Confirm `/design` is gone from the production sitemap and is not linked in the navbar.
 - [ ] No Boutique Studio tokens remain in `tailwind.config.ts` or `globals.css`.
 - [ ] No ad-hoc hex colors in components; only token names.
 - [ ] `npm run lint` and `npm run build` are clean.

@@ -24,9 +24,6 @@ export type {
 export { experience, experienceCopy, experienceDates, experienceDateTime } from "./experience";
 export type { ExperienceItem } from "./experience";
 
-export { pinnedRepos } from "./repos";
-export type { PinnedRepo } from "./repos";
-
 export { education } from "./education";
 export type { EducationItem } from "./education";
 

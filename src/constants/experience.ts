@@ -11,11 +11,6 @@ export type ExperienceItem = {
 export const experienceCopy = {
   title: "Experience",
   educationTitle: "Education",
-  githubTitle: "GitHub",
-  githubLoading: "Loading repositories",
-  viewOnGithub: "View on GitHub",
-  opensInNewTab: "opens in a new tab",
-  starsLabel: "stars",
 } as const;
 
 export function experienceDates(item: ExperienceItem): string {

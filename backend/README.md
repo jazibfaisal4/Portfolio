@@ -6,7 +6,6 @@ Small Python service behind the portfolio. It gives the site:
 |---|---|
 | `POST /api/chat` | Grounded assistant. Retrieves 4 chunks from `data/knowledge.json` (BM25), then streams an answer from Gemini or Groq. Falls back to a plain answer from the chunks if no key is set or the provider fails. |
 | `POST /api/contact` | Contact form. Validates, honeypot, rate-limits, sends through Resend. |
-| `GET /api/github/repos` | Your public repos from GitHub, cached for 1 hour. |
 | `GET /health` | Shows whether the LLM and contact form are configured. |
 
 ## Run locally (PowerShell)
@@ -23,7 +22,7 @@ uvicorn app.main:app --reload --port 8000
 Open http://127.0.0.1:8000/docs to try the endpoints. Check http://127.0.0.1:8000/health.
 With no keys set, `/api/chat` still works in fallback mode (`X-Mode: fallback`).
 
-Then run the frontend from the repo root with `npm run dev`. `next.config.ts` forwards `/api/chat`, `/api/contact` and `/api/github/repos` to `BACKEND_URL` (default `http://127.0.0.1:8000`).
+Then run the frontend from the repo root with `npm run dev`. `next.config.ts` forwards `/api/chat`, `/api/contact` and `/api/health` to `BACKEND_URL` (default `http://127.0.0.1:8000`).
 
 ## Keys (both free tiers; check current terms)
 
@@ -44,7 +43,7 @@ Then run the frontend from the repo root with `npm run dev`. `next.config.ts` fo
 python -m unittest discover -s tests -t . -v
 ```
 
-Covers retrieval, rate limiting, input cleaning, prompt building, provider stream parsing and the knowledge guard. The HTTP layer (FastAPI routes, Gemini/Groq/Resend/GitHub calls) is not covered by tests: try each once against the real services after you add keys.
+Covers retrieval, rate limiting, input cleaning, prompt building, provider stream parsing and the knowledge guard. The HTTP layer (FastAPI routes, Gemini/Groq/Resend calls) is not covered by tests: try each once against the real services after you add keys.
 
 ## Deploy
 

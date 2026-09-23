@@ -58,7 +58,6 @@ export const projectsCopy = {
   reposTitle: "Repositories",
   screenshotSoon: "Screenshot coming soon",
   screenshotSwitcher: "Recruiter dashboard screenshots",
-  // TODO(jazib): add repository or demo links for the interview system
 } as const;
 
 export const simulatorTiming = {

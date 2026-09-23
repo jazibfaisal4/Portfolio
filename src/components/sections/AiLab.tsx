@@ -19,3 +19,5 @@ export function AiLab() {
     </Section>
   );
 }
+
+export default AiLab;

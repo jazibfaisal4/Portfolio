@@ -1,8 +1,15 @@
 import type { NextConfig } from "next";
 
-// Where the FastAPI backend runs.
-// Local: http://127.0.0.1:8000. Production: your deployed backend URL (set BACKEND_URL in Vercel).
-const BACKEND_URL = (process.env.BACKEND_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
+const FALLBACK_BACKEND_URL = "http://127.0.0.1:8000";
+const backendFromEnv = process.env.BACKEND_URL?.trim();
+
+if (process.env.NODE_ENV === "production" && !backendFromEnv) {
+  console.warn(
+    "[next.config] BACKEND_URL is not set for this production build. /api/chat, /api/contact and /api/health will rewrite to http://127.0.0.1:8000 and will fail on the hosted site. Set BACKEND_URL to the deployed FastAPI origin.",
+  );
+}
+
+const BACKEND_URL = (backendFromEnv || FALLBACK_BACKEND_URL).replace(/\/$/, "");
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -11,12 +18,10 @@ const nextConfig: NextConfig = {
   // That means no CORS setup and the backend URL never reaches the client.
   async rewrites() {
     return {
-      // beforeFiles so these win over any leftover route handlers in src/app/api.
       beforeFiles: [
         { source: "/api/chat", destination: `${BACKEND_URL}/api/chat` },
         { source: "/api/contact", destination: `${BACKEND_URL}/api/contact` },
-        { source: "/api/github/repos", destination: `${BACKEND_URL}/api/github/repos` },
-        { source: "/api/health", destination: `${BACKEND_URL}/health` },
+        { source: "/api/health", destination: `${BACKEND_URL}/api/health` },
       ],
       afterFiles: [],
       fallback: [],
