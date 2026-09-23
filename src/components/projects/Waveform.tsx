@@ -25,7 +25,7 @@ export function Waveform({ active, className }: WaveformProps) {
       {WAVEFORM_BARS.map((bar, index) => (
         <span
           key={index}
-          className="waveform-bar bg-accent"
+          className={cn("waveform-bar bg-accent", index >= 12 && "max-md:hidden")}
           style={{
             ["--bar" as string]: bar,
             animationDelay: `${(index % 8) * -0.09}s`,

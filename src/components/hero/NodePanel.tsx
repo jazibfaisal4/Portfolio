@@ -23,7 +23,7 @@ export function NodePanel({ id, node, onClose }: NodePanelProps) {
       {node ? (
         <div className="flex flex-col gap-3">
           <div className="flex items-start justify-between gap-3">
-            <h2 className="text-h3 text-text">{node.name}</h2>
+            <p className="text-h3 text-text">{node.name}</p>
             <Button variant="ghost" onClick={onClose} className="shrink-0 px-3">
               {pipelineUi.close}
             </Button>

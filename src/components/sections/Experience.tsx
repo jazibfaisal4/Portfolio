@@ -5,7 +5,6 @@ import {
   experienceDateTime,
   onlyVerified,
 } from "@/constants";
-import { GithubRepos } from "@/components/sections/GithubRepos";
 import { Reveal } from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { Card } from "@/components/ui/Card";
@@ -70,8 +69,6 @@ export function Experience() {
             </Stagger>
           </div>
         </div>
-
-        <GithubRepos />
       </Container>
     </Section>
   );

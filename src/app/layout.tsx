@@ -3,6 +3,8 @@ import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { Providers } from "@/components/layout/Providers";
+import { profile } from "@/constants";
+import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
@@ -19,17 +21,49 @@ const mono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
+const siteUrl = getSiteUrl();
+const title = `${profile.name} | AI/ML developer and full-stack developer`;
+const description = profile.hero.subtext;
+
 export const metadata: Metadata = {
-  title: "Jazib Faisal | AI/ML developer and full-stack developer",
-  description:
-    "I build voice-first AI systems and the full-stack products around them. Fresh BSCS graduate building a real-time AI interview system.",
-  metadataBase: new URL("https://portfolio-jazib.vercel.app"),
-  openGraph: {
-    title: "Jazib Faisal | AI/ML developer and full-stack developer",
-    description:
-      "Fresh BSCS graduate. I'm building a real-time AI interview system: live audio over LiveKit, local Whisper speech-to-text and a recruiter dashboard.",
-    type: "website",
+  metadataBase: siteUrl,
+  title: {
+    default: title,
+    template: `%s | ${profile.name}`,
   },
+  description,
+  applicationName: profile.name,
+  authors: [{ name: profile.name, url: profile.github }],
+  creator: profile.name,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: profile.name,
+    title,
+    description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: "AI/ML developer and full-stack developer",
+  email: profile.email,
+  sameAs: [profile.github, profile.linkedin],
 };
 
 export default function RootLayout({
@@ -40,6 +74,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${sans.variable} ${mono.variable} bg-bg font-sans text-text antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <Providers>
           <a href="#content" className="skip-link">
             Skip to content

@@ -30,7 +30,6 @@ class Settings:
     contact_from_email: str
     public_email: str
     allowed_origins: list[str]
-    github_username: str
     chat_per_min_per_ip: int
     chat_per_min_global: int
     contact_per_hour_per_ip: int
@@ -66,7 +65,6 @@ def load_settings() -> Settings:
         ).strip(),
         public_email=os.environ.get("PUBLIC_EMAIL", "jazibfaisal66@gmail.com").strip(),
         allowed_origins=_csv("ALLOWED_ORIGINS", "http://localhost:3000"),
-        github_username=os.environ.get("GITHUB_USERNAME", "jazibfaisal4").strip(),
         chat_per_min_per_ip=_int("CHAT_PER_MIN_PER_IP", 10),
         chat_per_min_global=_int("CHAT_PER_MIN_GLOBAL", 60),
         contact_per_hour_per_ip=_int("CONTACT_PER_HOUR_PER_IP", 5),

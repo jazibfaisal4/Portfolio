@@ -1,4 +1,4 @@
-"""FastAPI app: /api/chat (grounded, streaming), /api/contact, /api/github/repos."""
+"""FastAPI app: /api/chat (grounded, streaming), /api/contact."""
 from __future__ import annotations
 
 import json
@@ -22,7 +22,6 @@ except ImportError:  # pragma: no cover
 from .config import load_settings
 from .contact import ContactError, send_contact_email
 from .fallback import answer_from_chunks
-from .github import fetch_repos
 from .knowledge import load_chunks
 from .llm import stream_answer
 from .prompts import build_messages, build_system_prompt
@@ -92,6 +91,7 @@ def _limit(key: str, limit: int, window_s: float, message: str) -> None:
         raise HTTPException(429, message, headers={"Retry-After": str(retry)})
 
 
+@app.get("/api/health")
 @app.get("/health")
 async def health() -> dict:
     return {
@@ -187,8 +187,3 @@ async def contact(req: ContactRequest, request: Request) -> dict:
     except ContactError:
         raise HTTPException(502, f"Couldn't send your message. Please email {S.public_email}.")
     return {"ok": True}
-
-
-@app.get("/api/github/repos")
-async def github_repos() -> dict:
-    return {"username": S.github_username, "repos": await fetch_repos(S.github_username)}

@@ -110,7 +110,6 @@ export function FlagshipCard({ project }: FlagshipCardProps) {
           <ExpandableText text={project.description} />
           {stageNames.length > 0 ? <PipelineStrip names={stageNames} /> : null}
           {project.stack.length > 0 ? <TagList tags={project.stack} /> : null}
-          {/* TODO(jazib): add repository or demo links for the interview system */}
         </div>
 
         {simulator ? (

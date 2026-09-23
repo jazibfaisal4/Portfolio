@@ -20,7 +20,7 @@ src/
     ui/           Container, Section, SectionHeader, Button, Chip, Card, MediaFrame, TagList
     layout/       Navbar, MobileMenu, Footer, Providers, SmoothScroll, ScrollProgress
     motion/       Reveal, Stagger, Magnetic
-    sections/     Hero, About, Skills, Projects, AiLab, Experience, GithubRepos, Contact
+    sections/     Hero, About, Skills, Projects, AiLab, Experience, Contact
     hero/         PipelineDiagram, PipelineNode, NodePanel, PipelineList
     ai/           AssistantProvider, ChatPanel, ChatMessage, SourceChips, Launcher, MobileSheet
   constants/      profile, pipelineNodes, skills, projects, experience, education, navLinks (re-exported by index.ts)
@@ -62,7 +62,7 @@ Two families: a geometric sans and a mono, the closest Google fonts to the refer
 
 ## Sections and responsive behavior
 
-Order and nav links: Home, About, Skills, Projects, AI Lab, Experience, Contact (GitHub sits inside Experience).
+Order and nav links: Home, About, Skills, Projects, AI Lab, Experience, Contact.
 
 | Section | Desktop (1024+) | Tablet (768 to 1023) | Mobile (under 768) |
 |---|---|---|---|
@@ -71,7 +71,7 @@ Order and nav links: Home, About, Skills, Projects, AI Lab, Experience, Contact 
 | Skills | Filter tabs (All, AI & ML, Voice AI, Full-stack, Data & backend). 4-column tiles. | 3 columns. | Tabs scroll horizontally with snap. 2 columns. |
 | Projects | Flagship card full width: copy and pipeline strip left, "Illustrative simulation" right. Other projects in 3 columns. | Flagship stacked. Others 2 columns. | Everything single column. Simulator is transcript only with a small waveform. Long text expands on tap. |
 | AI Lab | Centered console, max width 880px. | Full width. | Full width, height 70dvh, sticky input. The floating launcher opens the same chat as a bottom sheet. |
-| Experience | Two columns: experience timeline and education. GitHub repo cards below in 2 columns. | Same, repos 2 columns. | One column, repos 1 column. |
+| Experience | Two columns: experience timeline and education. | Same two columns. | One column. |
 | Contact | 2 columns: links and CV card left, form right. | Stacked. | Stacked, inputs full width. |
 | Footer | 3 columns. | 2 columns. | 1 column. |
 
@@ -126,7 +126,6 @@ Lighthouse mobile 90+ in every category. LCP under 2.5s, CLS under 0.1. Lazy-loa
 
 ## States
 
-- GitHub repos: skeleton while loading, hidden section if the list is empty or the API fails.
 - Chat: empty state with 4 suggested questions, plain-language errors (429: "Too many questions. Try again in a minute."), a Stop button while streaming.
 - Contact: loading, success, error, and a `mailto:` fallback link.
 - Missing images: `MediaFrame` shows a styled "Screenshot coming soon" frame, never a broken image.
